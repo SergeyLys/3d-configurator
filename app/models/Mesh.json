@@ -1,0 +1,20 @@
+{
+  "meshName": "stellaFront",
+  "attributes": [
+    {
+      "name": "textAttribute",
+      "value": "string",
+      "size": {
+        "x": "enum",
+        "y": "enum"
+      },
+      "scale": "enum",
+      "rotationAngle": "enum"
+    },
+    {
+      "name": "texture2d",
+      "material": "string",
+      "ambient": "string"
+    }
+  ]
+}
