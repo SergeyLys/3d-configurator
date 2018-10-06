@@ -1,5 +1,6 @@
 {
   "meshName": "stellaFront",
+  "position": {},
   "attributes": [
     {
       "name": "textAttribute",
