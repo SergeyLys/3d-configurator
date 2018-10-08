@@ -1,31 +1,28 @@
 import * as THREE from 'three-full';
+import { EventsControls } from './EventControls';
 import "../assets/styles/index.scss";
+import {getAbsolutePosition} from './helpers';
 
 class Configurator {
     constructor() {
-        this.onDocumentMouseMove = this.onDocumentMouseMove.bind(this);
-        this.onDocumentMouseDown = this.onDocumentMouseDown.bind(this);
-        this.onDocumentMouseUp = this.onDocumentMouseUp.bind(this);
-
         this.camera = {};
-        this.selection = null;
-        this.offset = new THREE.Vector3();
-        this.objects = [];
 
         this._initScene();
-        this._initDragControls();
+        this._addBasePlane();
         this._render();
-        // this._addEventListeners();
     }
 
     _initScene() {
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-        const renderer = new THREE.WebGLRenderer();
+        const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000 );
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         const ambient = new THREE.AmbientLight('#ffffff');
         const raycaster = new THREE.Raycaster();
 
+        renderer.setClearColor( 0x6495ED );
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
 
@@ -34,15 +31,19 @@ class Configurator {
         this.raycaster = raycaster;
         this.camera.object = camera;
         this.camera.controls = controls;
+        this.camera.object.position.set( 100, 400, 3000 );
         this.camera.object.lookAt(this.scene.position);
         this.camera.controls.rotateSpeed    = 1.0;
         this.camera.controls.zoomSpeed      = 1.0;
-        this.camera.controls.maxDistance    = 15;
-        this.camera.controls.minDistance    = 7;
+        // this.camera.controls.maxDistance    = 15;
+        // this.camera.controls.minDistance    = 7;
         this.camera.controls.enablePan      = false;
         this.camera.controls.enableDamping  = false;
         this.camera.controls.dampingFactor  = 0.1;
         this.camera.controls.rotateSpeed    = 0.5;
+        this.camera.controls.staticMoving = true;
+        this.camera.controls.minPolarAngle = Math.PI / 3;
+        this.camera.controls.maxPolarAngle = Math.PI / 3;
         this.camera.controls.target.set(0, 0, 0);
 
         this.scene.add(ambient);
@@ -50,103 +51,80 @@ class Configurator {
 
     }
 
-    _addEventListeners() {
-        document.addEventListener('mousedown', this.onDocumentMouseDown, false);
-        document.addEventListener('mousemove', this.onDocumentMouseMove, false);
-        document.addEventListener('mouseup', this.onDocumentMouseUp, false);
-
-    }
-
-    _addHelperPlane() {
-        this.plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(window.innerWidth, window.innerHeight, 8, 8), new THREE.MeshBasicMaterial({color: 0xffffff}));
-        this.plane.material.visible = false;
+    _addBasePlane() {
+        this.plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(2500, 2500, 8, 8), new THREE.MeshBasicMaterial({color: 0x555555}));
+        this.plane.position.y = 0;
+        this.plane.rotation.x =  -Math.PI / 2;
         this.scene.add(this.plane);
-    }
-
-    _initDragControls() {
-        const dragControls = new THREE.DragControls(this.objects, this.camera.object, this.renderer.domElement);
-        dragControls.addEventListener('dragstart', (event) => {
-            console.log(event);
-            this.camera.controls.enabled = false;
-        });
-        dragControls.addEventListener('dragend', () => {
-            this.camera.controls.enabled = true;
-        });
-    }
-
-    onDocumentMouseDown(event) {
-        const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-        const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-        const vector = new THREE.Vector3(mouseX, mouseY, 1);
-        vector.unproject(this.camera.object);
-        this.raycaster.set( this.camera.object.position, vector.sub( this.camera.object.position ).normalize() );
-        let intersects = this.raycaster.intersectObjects(this.objects);
-        if (intersects.length > 0) {
-            this.camera.controls.enabled = false;
-            this.selection = intersects[0].object;
-            intersects = this.raycaster.intersectObject(this.plane);
-            this.offset.copy(intersects[0].point).sub(this.plane.position);
-        }
-    }
-
-    onDocumentMouseMove(event) {
-        event.preventDefault();
-        const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-        const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-        const vector = new THREE.Vector3(mouseX, mouseY, 1);
-        vector.unproject(this.camera.object);
-        this.raycaster.set( this.camera.object.position, vector.sub( this.camera.object.position ).normalize() );
-        if (this.selection) {
-            const intersects = this.raycaster.intersectObject(this.plane);
-            this.selection.position.copy(intersects[0].point.sub(this.offset));
-        } else {
-            const intersects = this.raycaster.intersectObjects(this.objects);
-            if (intersects.length > 0) {
-                this.plane.position.copy(intersects[0].object.position);
-                this.plane.lookAt(this.camera.object.position);
-            }
-        }
-    }
-
-    onDocumentMouseUp() {
-        this.camera.controls.enabled = true;
-        this.selection = null;
     }
 
     loadModel(path) {
         const loader = new THREE.OBJLoader();
-        loader.load(path, (object) => {
-            object.traverse((mesh) => {
-                if (mesh instanceof THREE.Mesh) {
-                    mesh.material = new THREE.MeshPhongMaterial({
-                        color: '#ff0000'
-                    });
-                    mesh.geometry.center();
-                    this.objects.push(mesh);
-                    this.scene.add(mesh);
-                }
+        const mtlLoader = new THREE.MTLLoader();
+        const textureLoader = new THREE.TextureLoader();
+        const that = this;
+        mtlLoader.load('../assets/images/09.mtl', (materials) => {
+            materials.preload();
+            loader
+                .setMaterials(materials)
+                .load(path, (object) => {
+                object.traverse((mesh) => {
+                    if (mesh instanceof THREE.Mesh) {
+                        const objectGroup = new THREE.Group();
+                        mesh.material = new THREE.MeshPhongMaterial({
+                            // color: '#ff0000',
+                            map: textureLoader.load('../assets/images/01.jpg')
+                        });
+                        console.log(mesh.material);
+                        mesh.absoluteCoords = getAbsolutePosition(mesh);
+                        mesh.geometry.center();
+                        mesh.position.y = mesh.absoluteCoords.y;
+                        objectGroup.add(mesh);
+
+                        this.scene.add(mesh);
+
+                        this.EventsControls1 = new EventsControls( this.camera.object, this.renderer.domElement );
+                        this.EventsControls1.map = this.plane;
+
+                        this.EventsControls1.attachEvent( 'mouseOver', function () {
+
+                            this.container.style.cursor = 'pointer';
+
+                            that.camera.controls.enabled = false;
+                            that.camera.controls.target0.copy( that.camera.controls.target );
+                            that.camera.controls.position0.copy( that.camera.controls.object.position );
+
+                        });
+
+                        this.EventsControls1.attachEvent( 'mouseOut', function () {
+
+                            this.container.style.cursor = 'auto';
+
+                            that.camera.controls.reset();
+                            that.camera.controls.target.copy( that.camera.controls.target0 );
+                            that.camera.controls.object.position.copy( that.camera.controls.position0 );
+                            that.camera.controls.update();
+                            that.camera.controls.enabled = true;
+
+                        });
+
+                        this.EventsControls1.attachEvent( 'dragAndDrop', function () {
+
+                            this.container.style.cursor = 'move';
+                            this.focused.position.y = this.previous.y;
+
+                        });
+
+                        this.EventsControls1.attachEvent( 'mouseUp', function () {
+
+                            this.container.style.cursor = 'auto';
+
+                        });
+                        this.EventsControls1.attach( mesh );
+                    }
+                });
             });
         });
-        // let object, material, radius;
-        // const objGeometry = new THREE.SphereGeometry(1, 24, 24);
-        // for (let i = 0; i < 50; i++) {
-        //     material = new THREE.MeshPhongMaterial({color: Math.random() * 0xffffff});
-        //     material.transparent = true;
-        //     object = new THREE.Mesh(objGeometry.clone(), material);
-        //     this.objects.push(object);
-        //
-        //     radius = Math.random() * 4 + 2;
-        //     object.scale.x = radius;
-        //     object.scale.y = radius;
-        //     object.scale.z = radius;
-        //
-        //     object.position.x = Math.random() * 50 - 25;
-        //     object.position.y = Math.random() * 50 - 25;
-        //     object.position.z = Math.random() * 50 - 25;
-        //
-        //     this.scene.add(object);
-        // }
-
     }
 
     _render() {
@@ -163,6 +141,6 @@ class Configurator {
 
 window.addEventListener('load', () => {
     const app = new Configurator();
-    app.loadModel("../assets/images/model.obj");
+    app.loadModel("../assets/images/09.obj");
 
 });
