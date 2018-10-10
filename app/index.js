@@ -16,6 +16,7 @@ import {
     BoxGeometry,
     Vector2,
     Vector3,
+    RepeatWrapping,
 } from 'three-full';
 import "../assets/styles/index.scss";
 import {getAbsolutePosition, setUpMouseHander, setUpTouchHander} from './helpers';
@@ -31,9 +32,9 @@ class Configurator {
         this.groups = [];
         this.dragItem = null;
 
-        this.doMouseDown = this.doMouseDown.bind(this);
-        this.doMouseMove = this.doMouseMove.bind(this);
-        this.doMouseUp = this.doMouseUp.bind(this);
+        this._doMouseDown = this._doMouseDown.bind(this);
+        this._doMouseMove = this._doMouseMove.bind(this);
+        this._doMouseUp = this._doMouseUp.bind(this);
 
         this._initScene();
     }
@@ -72,6 +73,8 @@ class Configurator {
             new MeshPhongMaterial( {color:"yellow"} )
         );
         box.position.y = 100;
+        box.position.x = 300;
+        box.position.z = 300;
 
         const addBox = (x,z) => {
             const obj = box.clone();
@@ -80,14 +83,13 @@ class Configurator {
             this.world.add(obj);
         };
 
-        addBox(300,300);
         addBox(-450,-170);
         addBox(-180,450);
 
         this.world.add(box);
         this._setCameraOptions();
         this._addBasePlane();
-        setUpMouseHander(this.canvas,this.doMouseDown,this.doMouseMove,this.doMouseUp);
+        setUpMouseHander(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp);
         this._render();
     }
 
@@ -113,7 +115,7 @@ class Configurator {
         this.camera.controls.target.set(0, 0, 0);
     }
 
-    doMouseDown(x,y) {
+    _doMouseDown(x,y) {
         if (this.targetForDragging.parent === this.world) {
             this.world.remove(this.targetForDragging);  // I don't want to check for hits on targetForDragging
         }
@@ -147,7 +149,7 @@ class Configurator {
         }
     }
 
-    doMouseMove(x,y,evt,prevX,prevY) {
+    _doMouseMove(x,y,evt,prevX,prevY) {
         let a = 2*x/this.canvas.width - 1;
         let b = 1 - 2*y/this.canvas.height;
         this.raycaster.setFromCamera( new Vector2(a,b), this.camera.object );
@@ -166,7 +168,7 @@ class Configurator {
         // this.renderer.render(this.scene, this.camera.object);
     }
 
-    doMouseUp() {
+    _doMouseUp() {
         this.camera.controls.enabled = true;
     }
 
@@ -176,30 +178,35 @@ class Configurator {
         const mtlLoader = new MTLLoader();
         const textureLoader = new TextureLoader();
         const group = new Object3D();
-        // mtlLoader.load('../assets/images/22.mtl', (materials) => {
+        const texture = textureLoader.load('../assets/images/1.jpg', function ( texture ) {
+
+            texture.wrapS = texture.wrapT = RepeatWrapping;
+
+        } );
+        // mtlLoader.load('../assets/images/14.mtl', (materials) => {
         //     materials.preload();
-        //     loader
-        //         .setMaterials(materials)
-        //         .load(path, (object) => {
-        //         object.traverse((mesh) => {
-        //             if (mesh instanceof Mesh) {
-        //                 mesh.material = new MeshPhongMaterial({
-        //                     map: textureLoader.load('../assets/images/2.jpg')
-        //                 });
-        //                 mesh.absoluteCoords = getAbsolutePosition(mesh);
-        //
-        //                 meshes.push(mesh);
-        //             }
-        //         });
-        //
-        //         meshes.forEach((mesh) => {
-        //             group.add(mesh);
-        //         });
-        //         group.position.set(0, 0, 0);
-        //
-        //         this.groups.push(group);
-        //         this.world.add(group);
-        //     });
+            loader
+                // .setMaterials(materials)
+                .load(path, (object) => {
+                object.traverse((mesh) => {
+                    if (mesh instanceof Mesh) {
+                        mesh.material = new MeshPhongMaterial({
+                            map: texture
+                        });
+                        mesh.absoluteCoords = getAbsolutePosition(mesh);
+
+                        meshes.push(mesh);
+                    }
+                });
+
+                meshes.forEach((mesh) => {
+                    group.add(mesh);
+                });
+                group.position.set(0, 0, 0);
+
+                this.groups.push(group);
+                this.world.add(group);
+            });
         // });
     }
 
@@ -217,6 +224,6 @@ class Configurator {
 
 window.addEventListener('load', () => {
     const app = new Configurator();
-    app.loadModel("../assets/images/22.obj");
+    app.loadModel("../assets/images/23.obj");
 
 });
