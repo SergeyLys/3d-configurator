@@ -1,42 +1,108 @@
-import * as THREE from 'three-full';
-import { EventsControls } from './EventControls';
+import {
+    Scene,
+    PerspectiveCamera,
+    WebGLRenderer,
+    OrbitControls,
+    AmbientLight,
+    Raycaster,
+    Object3D,
+    Mesh,
+    MeshPhongMaterial,
+    MeshBasicMaterial,
+    PlaneBufferGeometry,
+    OBJLoader,
+    MTLLoader,
+    TextureLoader,
+    BoxGeometry,
+    Vector2,
+    Vector3,
+} from 'three-full';
 import "../assets/styles/index.scss";
-import {getAbsolutePosition} from './helpers';
+import {getAbsolutePosition, setUpMouseHander, setUpTouchHander} from './helpers';
 
 class Configurator {
     constructor() {
         this.camera = {};
+        this.canvas = null;
+        this.world = null;
+        this.ground = null;
+        this.targetForDragging = null;
+        this.intersects = [];
+        this.groups = [];
+        this.dragItem = null;
+
+        this.doMouseDown = this.doMouseDown.bind(this);
+        this.doMouseMove = this.doMouseMove.bind(this);
+        this.doMouseUp = this.doMouseUp.bind(this);
 
         this._initScene();
-        this._addBasePlane();
-        this._render();
     }
 
     _initScene() {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000 );
-        const renderer = new THREE.WebGLRenderer({
-            antialias: true
-        });
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        const ambient = new THREE.AmbientLight('#ffffff');
-        const raycaster = new THREE.Raycaster();
+        const scene =       new Scene();
+        const camera =      new PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000 );
+        const renderer =    new WebGLRenderer({ antialias: true });
+        const controls =    new OrbitControls(camera, renderer.domElement);
+        const ambient =     new AmbientLight('#ffffff');
+        const raycaster =   new Raycaster();
 
         renderer.setClearColor( 0x6495ED );
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
+
+        this.targetForDragging = new Mesh(
+            new BoxGeometry(10000,0.01,10000),
+            new MeshBasicMaterial()
+        );
+        this.targetForDragging.material.visible = false;
+
+        this.canvas = renderer.domElement;
+
+        this.world = new Object3D();
+        scene.add(this.world, ambient);
 
         this.renderer = renderer;
         this.scene = scene;
         this.raycaster = raycaster;
         this.camera.object = camera;
         this.camera.controls = controls;
+
+        const box = new Mesh(
+            new BoxGeometry(200, 200, 200),
+            new MeshPhongMaterial( {color:"yellow"} )
+        );
+        box.position.y = 100;
+
+        const addBox = (x,z) => {
+            const obj = box.clone();
+            obj.position.x = x;
+            obj.position.z = z;
+            this.world.add(obj);
+        };
+
+        addBox(300,300);
+        addBox(-450,-170);
+        addBox(-180,450);
+
+        this.world.add(box);
+        this._setCameraOptions();
+        this._addBasePlane();
+        setUpMouseHander(this.canvas,this.doMouseDown,this.doMouseMove,this.doMouseUp);
+        this._render();
+    }
+
+    _addBasePlane() {
+        this.ground = new Mesh(new PlaneBufferGeometry(3000, 3000, 8, 8), new MeshBasicMaterial({color: 0x555555}));
+        this.ground.position.y = 0;
+        this.ground.rotation.x =  -Math.PI / 2;
+        this.world.add(this.ground);
+    }
+
+    _setCameraOptions() {
         this.camera.object.position.set( 100, 400, 3000 );
         this.camera.object.lookAt(this.scene.position);
         this.camera.controls.rotateSpeed    = 1.0;
         this.camera.controls.zoomSpeed      = 1.0;
-        // this.camera.controls.maxDistance    = 15;
-        // this.camera.controls.minDistance    = 7;
         this.camera.controls.enablePan      = false;
         this.camera.controls.enableDamping  = false;
         this.camera.controls.dampingFactor  = 0.1;
@@ -45,91 +111,101 @@ class Configurator {
         this.camera.controls.minPolarAngle = Math.PI / 3;
         this.camera.controls.maxPolarAngle = Math.PI / 3;
         this.camera.controls.target.set(0, 0, 0);
-
-        this.scene.add(ambient);
-
-
     }
 
-    _addBasePlane() {
-        this.plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(2500, 2500, 8, 8), new THREE.MeshBasicMaterial({color: 0x555555}));
-        this.plane.position.y = 0;
-        this.plane.rotation.x =  -Math.PI / 2;
-        this.scene.add(this.plane);
+    doMouseDown(x,y) {
+        if (this.targetForDragging.parent === this.world) {
+            this.world.remove(this.targetForDragging);  // I don't want to check for hits on targetForDragging
+        }
+        const a = 2*x/this.canvas.width - 1;
+        const b = 1 - 2*y/this.canvas.height;
+        this.raycaster.setFromCamera( new Vector2(a,b), this.camera.object );
+        this.intersects = this.raycaster.intersectObjects( this.world.children, true );  // no need for recusion since all objects are top-level
+        if (this.intersects.length === 0) {
+            return false;
+        }
+        const item = this.intersects[0];
+        const filteredGroup = this.groups.filter((group) => item.object.parent === group);
+        let objectHit;
+
+        if (filteredGroup.length > 0) {
+            objectHit = item.object.parent;
+        } else {
+            objectHit = item.object;
+        }
+
+        if (objectHit === this.ground) {
+            return false;
+        }
+        else {
+            this.camera.controls.enabled = false;
+            this.dragItem = objectHit;
+            this.world.add(this.targetForDragging);
+            this.targetForDragging.position.set(0,item.point.y,0);
+            // this.renderer.render(this.scene, this.camera.object);
+            return true;
+        }
+    }
+
+    doMouseMove(x,y,evt,prevX,prevY) {
+        let a = 2*x/this.canvas.width - 1;
+        let b = 1 - 2*y/this.canvas.height;
+        this.raycaster.setFromCamera( new Vector2(a,b), this.camera.object );
+        this.intersects = this.raycaster.intersectObject( this.targetForDragging );
+        if (this.intersects.length === 0) {
+            return;
+        }
+        const locationX = this.intersects[0].point.x;
+        const locationZ = this.intersects[0].point.z;
+        const coords = new Vector3(locationX, 0, locationZ);
+        this.world.worldToLocal(coords);
+        a = Math.min(1500,Math.max(-1500,coords.x));
+        b = Math.min(1500,Math.max(-1500,coords.z));
+        this.dragItem.position.x = a;
+        this.dragItem.position.z = b;
+        // this.renderer.render(this.scene, this.camera.object);
+    }
+
+    doMouseUp() {
+        this.camera.controls.enabled = true;
     }
 
     loadModel(path) {
-        const loader = new THREE.OBJLoader();
-        const mtlLoader = new THREE.MTLLoader();
-        const textureLoader = new THREE.TextureLoader();
-        const that = this;
-        mtlLoader.load('../assets/images/09.mtl', (materials) => {
-            materials.preload();
-            loader
-                .setMaterials(materials)
-                .load(path, (object) => {
-                object.traverse((mesh) => {
-                    if (mesh instanceof THREE.Mesh) {
-                        const objectGroup = new THREE.Group();
-                        mesh.material = new THREE.MeshPhongMaterial({
-                            // color: '#ff0000',
-                            map: textureLoader.load('../assets/images/01.jpg')
-                        });
-                        console.log(mesh.material);
-                        mesh.absoluteCoords = getAbsolutePosition(mesh);
-                        mesh.geometry.center();
-                        mesh.position.y = mesh.absoluteCoords.y;
-                        objectGroup.add(mesh);
-
-                        this.scene.add(mesh);
-
-                        this.EventsControls1 = new EventsControls( this.camera.object, this.renderer.domElement );
-                        this.EventsControls1.map = this.plane;
-
-                        this.EventsControls1.attachEvent( 'mouseOver', function () {
-
-                            this.container.style.cursor = 'pointer';
-
-                            that.camera.controls.enabled = false;
-                            that.camera.controls.target0.copy( that.camera.controls.target );
-                            that.camera.controls.position0.copy( that.camera.controls.object.position );
-
-                        });
-
-                        this.EventsControls1.attachEvent( 'mouseOut', function () {
-
-                            this.container.style.cursor = 'auto';
-
-                            that.camera.controls.reset();
-                            that.camera.controls.target.copy( that.camera.controls.target0 );
-                            that.camera.controls.object.position.copy( that.camera.controls.position0 );
-                            that.camera.controls.update();
-                            that.camera.controls.enabled = true;
-
-                        });
-
-                        this.EventsControls1.attachEvent( 'dragAndDrop', function () {
-
-                            this.container.style.cursor = 'move';
-                            this.focused.position.y = this.previous.y;
-
-                        });
-
-                        this.EventsControls1.attachEvent( 'mouseUp', function () {
-
-                            this.container.style.cursor = 'auto';
-
-                        });
-                        this.EventsControls1.attach( mesh );
-                    }
-                });
-            });
-        });
+        const meshes = [];
+        const loader = new OBJLoader();
+        const mtlLoader = new MTLLoader();
+        const textureLoader = new TextureLoader();
+        const group = new Object3D();
+        // mtlLoader.load('../assets/images/22.mtl', (materials) => {
+        //     materials.preload();
+        //     loader
+        //         .setMaterials(materials)
+        //         .load(path, (object) => {
+        //         object.traverse((mesh) => {
+        //             if (mesh instanceof Mesh) {
+        //                 mesh.material = new MeshPhongMaterial({
+        //                     map: textureLoader.load('../assets/images/2.jpg')
+        //                 });
+        //                 mesh.absoluteCoords = getAbsolutePosition(mesh);
+        //
+        //                 meshes.push(mesh);
+        //             }
+        //         });
+        //
+        //         meshes.forEach((mesh) => {
+        //             group.add(mesh);
+        //         });
+        //         group.position.set(0, 0, 0);
+        //
+        //         this.groups.push(group);
+        //         this.world.add(group);
+        //     });
+        // });
     }
 
     _render() {
         const { camera, scene, renderer } = this;
-        requestAnimationFrame(()=> {
+        requestAnimationFrame(() => {
             this._render();
         });
         if (camera && scene && renderer) {
@@ -141,6 +217,6 @@ class Configurator {
 
 window.addEventListener('load', () => {
     const app = new Configurator();
-    app.loadModel("../assets/images/09.obj");
+    app.loadModel("../assets/images/22.obj");
 
 });
