@@ -14,6 +14,8 @@
     "url": "https://cvgellhorn@github.com/cvgellhorn/webpack-boilerplate.git"
   },
   "dependencies": {
+    "@tweenjs/tween.js": "^17.2.0",
+    "fabric": "^2.4.1",
     "lodash": "4.17.11",
     "three-full": "6.0.0"
   },
