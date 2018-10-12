@@ -418,6 +418,7 @@ class Configurator {
 
     setFrontText() {
         const stellaFront = this.world.getObjectByName('TextBox');
+        console.log(this.textBox.canvas);
         const { canvas } = this.textBox.canvas.contextContainer;
         const texture = new CanvasTexture(canvas);
         texture.needsUpdate = true;
