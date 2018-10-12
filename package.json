@@ -6,7 +6,7 @@
   "license": "MIT",
   "homepage": "https://github.com/cvgellhorn/webpack-boilerplate",
   "scripts": {
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
     "build": "webpack -p --progress --mode production --config webpack.config.build.js"
   },
   "repository": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "@tweenjs/tween.js": "^17.2.0",
     "fabric": "^2.4.1",
+    "http-server": "^0.11.1",
     "lodash": "4.17.11",
     "three-full": "6.0.0"
   },
