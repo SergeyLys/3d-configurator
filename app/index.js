@@ -17,7 +17,8 @@ import {
     Vector3,
     RepeatWrapping,
     Box3,
-    CanvasTexture
+    CanvasTexture,
+    Texture
 } from 'three-full';
 import OrbitControls from './libs/OrbitControls';
 import "../assets/styles/index.scss";
@@ -91,28 +92,28 @@ class Configurator {
         this.camera.controls = controls;
         this.textureLoader = textureLoader;
 
-        // const box = new Mesh(
-        //     new BoxGeometry(200, 200, 200),
-        //     new MeshPhongMaterial( {color:"yellow"} )
-        // );
-        // box.position.y = 100;
-        // box.position.x = 300;
-        // box.position.z = 300;
-        //
-        // const addBox = (x,z) => {
-        //     const obj = box.clone();
-        //     obj.position.x = x;
-        //     obj.position.z = z;
-        //     this.world.add(obj);
-        // };
-        //
-        // addBox(-450,-170);
-        // addBox(-180,450);
-        //
-        // this.world.add(box);
+        const box = new Mesh(
+            new BoxGeometry(200, 200, 200),
+            new MeshPhongMaterial( {color:"yellow"} )
+        );
+        box.position.y = 100;
+        box.position.x = 300;
+        box.position.z = 300;
+
+        const addBox = (x,z) => {
+            const obj = box.clone();
+            obj.position.x = x;
+            obj.position.z = z;
+            this.world.add(obj);
+        };
+
+        addBox(-450,-170);
+        addBox(-180,450);
+
+        this.world.add(box);
         this._setCameraOptions();
         this._addBasePlane();
-        setUpMouseHander(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp);
+        setUpMouseHander(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp, true);
         this._render();
     }
 
@@ -159,7 +160,7 @@ class Configurator {
             objectHit = item.object;
         }
 
-        if (objectHit === this.ground) {
+        if (objectHit === this.ground || !this.camera.controls.enabled) {
             return false;
         }
         else {
@@ -232,7 +233,9 @@ class Configurator {
             }, options.duration || 1000)
             .start()
             .onUpdate(() => {
-                if (options.zoom) controls.setRadius(angle.zoom);
+                if (options.zoom) {
+                    controls.setRadius(angle.zoom);
+                }
                 if (options.x !== undefined || options.y !== undefined || options.z !== undefined) {
                     controls.target.set(angle.positionX, angle.positionY, angle.positionZ);
                 }
@@ -356,6 +359,7 @@ class Configurator {
         // const checkbox = new fabric.Image()
 
         const textBox = new fabric.Textbox("", {
+            name: 'TextBox',
             fontSize: 20,
             left: 0,
             top: 0,
@@ -365,13 +369,16 @@ class Configurator {
             fill: "#ffffff",
             hasRotatingPoint: true,
             centerTransform: true,
+            evented: true
         });
+        fabricCanvas.getItemByName = function(name) {
+            return this.getObjects().filter(obj => obj.name === name)[0]
+        };
         fabricCanvas.centerObject(textBox);
         fabricCanvas.add(textBox);
         fabricCanvas.setActiveObject(textBox);
         textBox.enterEditing();
         fabricCanvas.renderAll();
-
 
         Object.assign(this.textBox, {
             parentCanvas: canvas,
@@ -381,7 +388,6 @@ class Configurator {
         });
 
         document.body.appendChild(fabricCanvas.wrapperEl);
-        this.camera.controls.enabled = false;
 
         // fabricCanvas.upperCanvasEl.addEventListener('click', () => {
         //     textBox.enterEditing();
@@ -392,14 +398,15 @@ class Configurator {
     editFrontText() {
         this.camera.controls.minPolarAngle = 0;
         this.camera.controls.maxPolarAngle = Infinity;
+        this.camera.controls.enabled = false;
         this.defaultCameraPosition.x = this.camera.controls.target.x;
         this.defaultCameraPosition.y = this.camera.controls.target.y;
         this.defaultCameraPosition.z = this.camera.controls.getRadius();
         const stellaFront = this.world.getObjectByName('TextBox');
 
         this._setCameraPosition({
-            polar: 1.5,
-            zoom: 1500,
+            polar: Math.PI / 2,
+            zoom: this._getCenterPoint(stellaFront).z + 1500,
             x: this._getCenterPoint(stellaFront).x,
             y: this._getCenterPoint(stellaFront).y,
             azimuth: 0,
@@ -408,8 +415,17 @@ class Configurator {
                 stellaFront, this.camera.object, this.width, this.height
             );
             if (stellaFront.material.isFilled) {
-                stellaFront.material.map = new CanvasTexture();
+                stellaFront.material.map = new Texture();
                 document.body.appendChild(this.textBox.canvas.wrapperEl);
+                this.textBox.canvas.wrapperEl.style.left = left;
+                this.textBox.canvas.wrapperEl.style.top = top;
+                this.textBox.canvas.wrapperEl.style.width = width;
+                this.textBox.canvas.wrapperEl.style.height = height;
+                const textBox = this.textBox.canvas.getItemByName('TextBox');
+                if (textBox) {
+                    this.textBox.canvas.setActiveObject(textBox);
+                    textBox.enterEditing();
+                }
             } else {
                 this._createCanvasForText(stellaFront, width, height, left, top);
             }
@@ -417,15 +433,12 @@ class Configurator {
     }
 
     setFrontText() {
+        this.textBox.canvas.discardActiveObject();
+        this.textBox.canvas.renderAll();
         const stellaFront = this.world.getObjectByName('TextBox');
-        console.log(this.textBox.canvas);
         const { canvas } = this.textBox.canvas.contextContainer;
-        const texture = new CanvasTexture(canvas);
-        texture.needsUpdate = true;
-        stellaFront.material.map = texture;
-        this.camera.controls.maxPolarAngle = Math.PI / 3;
-        this.camera.controls.minPolarAngle = Math.PI / 3;
-        this.camera.controls.enabled = true;
+        stellaFront.material.map = new CanvasTexture(canvas);
+
         if (document.querySelector('.canvas-container')) {
             document.querySelector('.canvas-container').remove();
         }
@@ -435,6 +448,10 @@ class Configurator {
             y: this.defaultCameraPosition.y,
             polar: Math.PI / 3,
             zoom: this.defaultCameraPosition.z
+        }).then(() => {
+            this.camera.controls.maxPolarAngle = Math.PI / 3;
+            this.camera.controls.minPolarAngle = Math.PI / 3;
+            this.camera.controls.enabled = true;
         });
     }
 
@@ -469,13 +486,15 @@ window.addEventListener('load', () => {
     const app = new Configurator();
     app.loadModel("../assets/images/23.obj");
 
-    document.getElementById('setCamFront').addEventListener('click', () => {
+    document.getElementById('setCamFront').addEventListener('click', (e) => {
         app.editFrontText();
+        e.target.style.display = 'none';
         document.getElementById('applyText').style.display = 'block';
     });
     document.getElementById('applyText').addEventListener('click', (e) => {
         app.setFrontText();
         e.target.style.display = 'none';
+        document.getElementById('setCamFront').style.display = 'block';
     });
 
     const textureControls = document.querySelector('.texture-controls');
