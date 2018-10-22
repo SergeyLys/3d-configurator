@@ -22,11 +22,19 @@ import {
     Texture,
     JSONLoader,
     GeometryUtils,
-    Color
+    Color,
+    SpotLight
 } from 'three-full';
 import OrbitControls from './libs/OrbitControls';
 import "../assets/styles/index.scss";
-import {getAbsolutePosition, setUpMouseHander, setUpTouchHander, randomPointInDiapason} from './helpers';
+import {
+    getAbsolutePosition,
+    setUpMouseHander,
+    setUpTouchHander,
+    randomPointInDiapason,
+    randNum,
+    parseSize
+} from './helpers';
 import TWEEN from '@tweenjs/tween.js';
 import {fabric} from 'fabric';
 import api from './models/db';
@@ -70,10 +78,14 @@ class Configurator {
         const camera =          new PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.1, 10000 );
         const renderer =        new WebGLRenderer({ antialias: true, alpha: true });
         const controls =        new OrbitControls(camera, renderer.domElement);
-        const ambient =         new AmbientLight('#ffffff');
+        const ambient =         new AmbientLight(0xaaaaaa,1);
         const raycaster =       new Raycaster();
         const textureLoader =   new TextureLoader();
         const objLoader =       new OBJLoader();
+        const spotLight =       new SpotLight(0xffffff);
+        spotLight.position.set( 0, 30000, 5000 );
+        spotLight.intensity = 1;
+        spotLight.castShadow = true;
 
         renderer.setClearColor( 0x6495ED );
         renderer.setSize( window.innerWidth, window.innerHeight );
@@ -90,7 +102,7 @@ class Configurator {
         this.height = this.canvas.getBoundingClientRect().height;
 
         this.world = new Object3D();
-        scene.add(this.world, ambient);
+        scene.add(this.world, ambient, spotLight);
 
         this.renderer = renderer;
         this.scene = scene;
@@ -100,25 +112,25 @@ class Configurator {
         this.textureLoader = textureLoader;
         this.objLoader = objLoader;
 
-        const box = new Mesh(
-            new BoxGeometry(200, 200, 200),
-            new MeshPhongMaterial( {color:"yellow"} )
-        );
-        box.position.y = 100;
-        box.position.x = 300;
-        box.position.z = 300;
-
-        const addBox = (x,z) => {
-            const obj = box.clone();
-            obj.position.x = x;
-            obj.position.z = z;
-            this.world.add(obj);
-        };
-
-        addBox(-450,-170);
-        addBox(-180,450);
-
-        this.world.add(box);
+        // const box = new Mesh(
+        //     new BoxGeometry(200, 200, 200),
+        //     new MeshPhongMaterial( {color:"yellow"} )
+        // );
+        // box.position.y = 100;
+        // box.position.x = 300;
+        // box.position.z = 300;
+        //
+        // const addBox = (x,z) => {
+        //     const obj = box.clone();
+        //     obj.position.x = x;
+        //     obj.position.z = z;
+        //     this.world.add(obj);
+        // };
+        //
+        // addBox(-450,-170);
+        // addBox(-180,450);
+        //
+        // this.world.add(box);
         this._setCameraOptions();
         this._addBasePlane().then((group) => {
             console.log(group);
@@ -145,39 +157,55 @@ class Configurator {
         const group = new Object3D();
         let positionResolve;
 
-        const width = this.data.size.width * 10;
-        const height = this.data.size.height * 10;
+        const width = parseSize(this.data.size).width * 10;
+        const height = parseSize(this.data.size).height * 10;
 
-        this.ground = new Mesh(new PlaneBufferGeometry(width, height, 8, 8), new MeshBasicMaterial({color: 0x555555}));
+        this.ground = new Mesh(
+            new PlaneBufferGeometry(width, height, 8, 8),
+            new MeshBasicMaterial({
+                color: 0x555555,
+                map: this.textureLoader.load('../assets/images/ground.jpg')
+            })
+        );
+        this.ground.material.map.wrapS = RepeatWrapping;
+        this.ground.material.map.wrapT = RepeatWrapping;
+        this.ground.material.map.repeat.set(4, 4);
         this.ground.position.y = 0;
         this.ground.rotation.x =  -Math.PI / 2;
         this.ground.geometry.computeBoundingBox();
+        this.ground.dragable = false;
         const v0 = this.ground.geometry.boundingBox.min;
         const v1 = this.ground.geometry.boundingBox.max;
 
         this.world.add(this.ground);
 
 
-        this.objLoader.load('../assets/images/Grass.obj',(geometry) => {
+        this.objLoader.load('../assets/images/Grass.obj', (geometry) => {
             geometry.traverse((mesh) => {
                 if (mesh instanceof Mesh) {
-                    for (let i = 0; i <= 1000; i++) {
-                        const mesh = new Mesh(geometry,material);
-                        mesh.position.copy(randomPointInDiapason(v0, v1));
-                        grassMeshes.push(mesh);
+                    const meshBox = new Box3().setFromObject(mesh).getSize(new Vector3());
+                    const len = Math.floor((width * height) / (meshBox.x * meshBox.y));
+                    mesh.material = material;
+                    for (let i = 0; i <= len; i++) {
+                        const grassClone = mesh.clone();
+                        const scaler = Math.random() * (1.5 - 0.5) + 0.5;
+                        grassClone.position.copy(randomPointInDiapason(v0, v1));
+                        grassClone.rotation.y = randNum(0,360,true) * Math.PI / 180;
+                        grassClone.scale.set(scaler,scaler,scaler);
+                        
+                        group.add(grassClone);
                     }
                 }
             });
 
-            // grassMeshes.forEach((mesh) => {
-            //     group.add(mesh);
-            // });
-            //
-            // group.position.set(0, 0, 0);
+            Object.assign(group, {
+                dragable: false,
+            });
 
-            this.world.add(geometry);
+            this.groups.push(group);
+            this.world.add(group);
 
-            positionResolve(geometry);
+            positionResolve();
         });
 
         return new Promise((resolve) => { positionResolve = resolve; });
@@ -218,8 +246,8 @@ class Configurator {
         } else {
             objectHit = item.object;
         }
-
-        if (objectHit === this.ground || !this.camera.controls.enabled) {
+        
+        if (!this.camera.controls.enabled || !objectHit.dragable) {
             return false;
         }
         else {
@@ -398,6 +426,9 @@ class Configurator {
                 group.add(mesh);
             });
             group.position.set(0, 0, 0);
+            Object.assign(group, {
+                dragable: true
+            });
 
             this.groups.push(group);
             this.world.add(group);

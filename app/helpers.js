@@ -19,6 +19,20 @@ export function randomPointInDiapason(min, max) {
     );
 }
 
+export function randNum(min,max,bool) {
+    let num = Math.floor(Math.random()*max) + min;
+    if(bool || typeof bool === "undefined"){
+        num *= Math.floor(Math.random()*2) === 1 ? 1 : -1;
+    }
+    return num;
+}
+
+export function parseSize(str) {
+    return {
+        width: str.split('*').pop(),
+        height: str.split('*').pop()
+    }
+}
 
 export function setUpMouseHander (element, mouseDownFunc, mouseDragFunc, mouseUpFunc) {
     /*

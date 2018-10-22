@@ -11146,10 +11146,7 @@
     }
   ],
   "id": "treeroot",
-  "size": {
-    "width": 200,
-    "height": 200
-  },
+  "size": "200*200",
   "cheap": true,
   "cemetery": "hovanskoesevernoye"
 }
