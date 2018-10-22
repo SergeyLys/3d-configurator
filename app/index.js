@@ -120,24 +120,30 @@ class Configurator {
 
         this.world.add(box);
         this._setCameraOptions();
-        this._addBasePlane();
+        this._addBasePlane().then((group) => {
+            console.log(group);
+            this.loadModel("../assets/images/23.obj");
+        });
         setUpMouseHander(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp, true);
         this._render();
     }
 
     _addBasePlane() {
-        // const material = new MeshPhongMaterial({
-        //     color : new Color(0xffffff),
-        //     side : DoubleSide,
-        //     shininess :0,
-        //     map : this.textureLoader.load('../assets/images/grass.png'),
-        //     bumpMap : this.textureLoader.load('../assets/images/grass.png'),
-        //     bumpScale : -.05,
-        //     transparent : true,
-        //     depthTest : true,
-        //     depthWrite : true,
-        //     alphaTest : .25,
-        // });
+        const material = new MeshPhongMaterial({
+            color : new Color(0xffffff),
+            side : DoubleSide,
+            shininess :0,
+            map : this.textureLoader.load('../assets/images/grass.png'),
+            bumpMap : this.textureLoader.load('../assets/images/grass.png'),
+            bumpScale : -.05,
+            transparent : true,
+            depthTest : true,
+            depthWrite : true,
+            alphaTest : .25,
+        });
+        const grassMeshes = [];
+        const group = new Object3D();
+        let positionResolve;
 
         const width = this.data.size.width * 10;
         const height = this.data.size.height * 10;
@@ -146,18 +152,35 @@ class Configurator {
         this.ground.position.y = 0;
         this.ground.rotation.x =  -Math.PI / 2;
         this.ground.geometry.computeBoundingBox();
-        // const v0 = this.ground.geometry.boundingBox.min;
-        // const v1 = this.ground.geometry.boundingBox.max;
+        const v0 = this.ground.geometry.boundingBox.min;
+        const v1 = this.ground.geometry.boundingBox.max;
 
-        this.objLoader.load('../assets/images/grass.json',(geometry) => {
-            // for (let i = 0; i < 1000; i++) {
-            //     const mesh = new Mesh(geometry,material);
-            //     mesh.position.copy(randomPointInDiapason(v0, v1));
-            //     this.world.add(mesh);
-            // }
-        });
         this.world.add(this.ground);
 
+
+        this.objLoader.load('../assets/images/Grass.obj',(geometry) => {
+            geometry.traverse((mesh) => {
+                if (mesh instanceof Mesh) {
+                    for (let i = 0; i <= 1000; i++) {
+                        const mesh = new Mesh(geometry,material);
+                        mesh.position.copy(randomPointInDiapason(v0, v1));
+                        grassMeshes.push(mesh);
+                    }
+                }
+            });
+
+            // grassMeshes.forEach((mesh) => {
+            //     group.add(mesh);
+            // });
+            //
+            // group.position.set(0, 0, 0);
+
+            this.world.add(geometry);
+
+            positionResolve(geometry);
+        });
+
+        return new Promise((resolve) => { positionResolve = resolve; });
     }
 
     _setCameraOptions() {
@@ -349,8 +372,7 @@ class Configurator {
         const textureTransparent = this.textureLoader.load('../assets/images/transparent.png', function ( tex ) {
             tex.wrapS = tex.wrapT = RepeatWrapping;
         });
-        this.objLoader
-            .load(path, (object) => {
+        this.objLoader.load(path, (object) => {
             object.traverse((mesh) => {
                 if (mesh instanceof Mesh) {
                     if (mesh.name === 'TextBox') {
@@ -380,10 +402,6 @@ class Configurator {
             this.groups.push(group);
             this.world.add(group);
         });
-    }
-
-    _updateModel() {
-
     }
 
     _createCanvasForText(currentElement, width, height, left, top) {
@@ -525,7 +543,6 @@ class Configurator {
 window.addEventListener('load', () => {
 
     const app = new Configurator(api);
-    app.loadModel("../assets/images/23.obj");
 
     document.getElementById('setCamFront').addEventListener('click', (e) => {
         app.editFrontText();
@@ -547,5 +564,4 @@ window.addEventListener('load', () => {
         });
         textureControls.appendChild(button);
     });
-
 });
