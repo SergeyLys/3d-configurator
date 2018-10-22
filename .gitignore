@@ -7,7 +7,9 @@
 log/
 node_modules/
 bower_components/
+dist/
 
 ## Files
 result.xml
 npm-debug.log
+task.txt

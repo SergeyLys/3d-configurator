@@ -1,6 +1,6 @@
 import { Vector3 } from 'three-full';
 
-export const getAbsolutePosition = (mesh) => {
+export function getAbsolutePosition(mesh) {
     mesh.geometry.computeBoundingBox();
     const { boundingBox } = mesh.geometry;
     const position = new Vector3();
@@ -9,9 +9,18 @@ export const getAbsolutePosition = (mesh) => {
     position.add(boundingBox.min);
     position.applyMatrix4(mesh.matrixWorld);
     return {x: position.x, y: position.y, z: position.z};
-};
+}
 
-export const setUpMouseHander = (element, mouseDownFunc, mouseDragFunc, mouseUpFunc) => {
+export function randomPointInDiapason(min, max) {
+    return new Vector3(
+        Math.random() * (max.x - min.x) + min.x,
+        0,
+        Math.random() * (max.y - min.y) + min.y
+    );
+}
+
+
+export function setUpMouseHander (element, mouseDownFunc, mouseDragFunc, mouseUpFunc) {
     /*
            element -- either the element itself or a string with the id of the element
            mouseDownFunc(x,y,evt) -- should return a boolean to indicate whether to start a drag operation
@@ -77,9 +86,9 @@ export const setUpMouseHander = (element, mouseDownFunc, mouseDragFunc, mouseUpF
     }
     element.addEventListener("mousedown", doMouseDown);
     element.addEventListener("mouseup", doMouseUp);
-};
+}
 
-export const setUpTouchHander = (element, touchStartFunc, touchMoveFunc, touchEndFunc, touchCancelFunc) => {
+export function setUpTouchHander (element, touchStartFunc, touchMoveFunc, touchEndFunc, touchCancelFunc) {
     /*
            element -- either the element itself or a string with the id of the element
            touchStartFunc(x,y,evt) -- should return a boolean to indicate whether to start a drag operation
@@ -160,4 +169,4 @@ export const setUpTouchHander = (element, touchStartFunc, touchMoveFunc, touchEn
         }
     }
     element.addEventListener("touchstart", doTouchStart);
-};
+}

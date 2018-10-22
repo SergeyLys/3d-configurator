@@ -16,15 +16,20 @@ import {
     Vector2,
     Vector3,
     RepeatWrapping,
+    DoubleSide,
     Box3,
     CanvasTexture,
-    Texture
+    Texture,
+    JSONLoader,
+    GeometryUtils,
+    Color
 } from 'three-full';
 import OrbitControls from './libs/OrbitControls';
 import "../assets/styles/index.scss";
-import {getAbsolutePosition, setUpMouseHander, setUpTouchHander} from './helpers';
+import {getAbsolutePosition, setUpMouseHander, setUpTouchHander, randomPointInDiapason} from './helpers';
 import TWEEN from '@tweenjs/tween.js';
 import {fabric} from 'fabric';
+import api from './models/db';
 
 const textureList = [
     {
@@ -38,7 +43,7 @@ const textureList = [
 ];
 
 class Configurator {
-    constructor() {
+    constructor(data) {
         this.camera = {};
         this.canvas = null;
         this.world = null;
@@ -51,6 +56,7 @@ class Configurator {
         this.height = null;
         this.textBox = {};
         this.defaultCameraPosition = new Vector3();
+        this.data = data;
 
         this._doMouseDown = this._doMouseDown.bind(this);
         this._doMouseMove = this._doMouseMove.bind(this);
@@ -67,6 +73,7 @@ class Configurator {
         const ambient =         new AmbientLight('#ffffff');
         const raycaster =       new Raycaster();
         const textureLoader =   new TextureLoader();
+        const objLoader =       new OBJLoader();
 
         renderer.setClearColor( 0x6495ED );
         renderer.setSize( window.innerWidth, window.innerHeight );
@@ -91,6 +98,7 @@ class Configurator {
         this.camera.object = camera;
         this.camera.controls = controls;
         this.textureLoader = textureLoader;
+        this.objLoader = objLoader;
 
         const box = new Mesh(
             new BoxGeometry(200, 200, 200),
@@ -118,10 +126,38 @@ class Configurator {
     }
 
     _addBasePlane() {
-        this.ground = new Mesh(new PlaneBufferGeometry(3000, 3000, 8, 8), new MeshBasicMaterial({color: 0x555555}));
+        // const material = new MeshPhongMaterial({
+        //     color : new Color(0xffffff),
+        //     side : DoubleSide,
+        //     shininess :0,
+        //     map : this.textureLoader.load('../assets/images/grass.png'),
+        //     bumpMap : this.textureLoader.load('../assets/images/grass.png'),
+        //     bumpScale : -.05,
+        //     transparent : true,
+        //     depthTest : true,
+        //     depthWrite : true,
+        //     alphaTest : .25,
+        // });
+
+        const width = this.data.size.width * 10;
+        const height = this.data.size.height * 10;
+
+        this.ground = new Mesh(new PlaneBufferGeometry(width, height, 8, 8), new MeshBasicMaterial({color: 0x555555}));
         this.ground.position.y = 0;
         this.ground.rotation.x =  -Math.PI / 2;
+        this.ground.geometry.computeBoundingBox();
+        // const v0 = this.ground.geometry.boundingBox.min;
+        // const v1 = this.ground.geometry.boundingBox.max;
+
+        this.objLoader.load('../assets/images/grass.json',(geometry) => {
+            // for (let i = 0; i < 1000; i++) {
+            //     const mesh = new Mesh(geometry,material);
+            //     mesh.position.copy(randomPointInDiapason(v0, v1));
+            //     this.world.add(mesh);
+            // }
+        });
         this.world.add(this.ground);
+
     }
 
     _setCameraOptions() {
@@ -184,9 +220,17 @@ class Configurator {
         const locationX = this.intersects[0].point.x;
         const locationZ = this.intersects[0].point.z;
         const coords = new Vector3(locationX, 0, locationZ);
+        const meshBox = new Box3().setFromObject(this.dragItem).getSize(new Vector3());
+
         this.world.worldToLocal(coords);
-        a = Math.min(1500,Math.max(-1500,coords.x));
-        b = Math.min(1500,Math.max(-1500,coords.z));
+        a = Math.min(
+            this.ground.geometry.boundingBox.max.x - (meshBox.x/2),
+            Math.max(this.ground.geometry.boundingBox.min.x + (meshBox.x/2),coords.x)
+        );
+        b = Math.min(
+            this.ground.geometry.boundingBox.max.y - (meshBox.z/2),
+            Math.max(this.ground.geometry.boundingBox.min.y + (meshBox.z/2),coords.z)
+        );
         this.dragItem.position.x = a;
         this.dragItem.position.z = b;
         // this.renderer.render(this.scene, this.camera.object);
@@ -296,8 +340,6 @@ class Configurator {
 
     loadModel(path) {
         const meshes = [];
-        const loader = new OBJLoader();
-        const mtlLoader = new MTLLoader();
         const group = new Object3D();
         const texture = this.textureLoader.load('../assets/images/1.jpg', function ( texture ) {
 
@@ -305,45 +347,43 @@ class Configurator {
 
         } );
         const textureTransparent = this.textureLoader.load('../assets/images/transparent.png', function ( tex ) {
-
             tex.wrapS = tex.wrapT = RepeatWrapping;
+        });
+        this.objLoader
+            .load(path, (object) => {
+            object.traverse((mesh) => {
+                if (mesh instanceof Mesh) {
+                    if (mesh.name === 'TextBox') {
 
-        } );
-        // mtlLoader.load('../assets/images/14.mtl', (materials) => {
-        //     materials.preload();
-            loader
-                // .setMaterials(materials)
-                .load(path, (object) => {
-                object.traverse((mesh) => {
-                    if (mesh instanceof Mesh) {
-                        if (mesh.name === 'TextBox') {
-
-                            mesh.material = new MeshPhongMaterial({
-                                // color: '#ff0000',
-                                map: textureTransparent,
-                                transparent: true,
-                            });
-                        } else {
-                            mesh.material = new MeshPhongMaterial({
-                                map: texture
-                            });
-                        }
-
-                        mesh.absoluteCoords = getAbsolutePosition(mesh);
-
-                        meshes.push(mesh);
+                        mesh.material = new MeshPhongMaterial({
+                            // color: '#ff0000',
+                            map: textureTransparent,
+                            transparent: true,
+                        });
+                    } else {
+                        mesh.material = new MeshPhongMaterial({
+                            map: texture
+                        });
                     }
-                });
 
-                meshes.forEach((mesh) => {
-                    group.add(mesh);
-                });
-                group.position.set(0, 0, 0);
+                    mesh.absoluteCoords = getAbsolutePosition(mesh);
 
-                this.groups.push(group);
-                this.world.add(group);
+                    meshes.push(mesh);
+                }
             });
-        // });
+
+            meshes.forEach((mesh) => {
+                group.add(mesh);
+            });
+            group.position.set(0, 0, 0);
+
+            this.groups.push(group);
+            this.world.add(group);
+        });
+    }
+
+    _updateModel() {
+
     }
 
     _createCanvasForText(currentElement, width, height, left, top) {
@@ -483,7 +523,8 @@ class Configurator {
 }
 
 window.addEventListener('load', () => {
-    const app = new Configurator();
+
+    const app = new Configurator(api);
     app.loadModel("../assets/images/23.obj");
 
     document.getElementById('setCamFront').addEventListener('click', (e) => {
@@ -506,4 +547,5 @@ window.addEventListener('load', () => {
         });
         textureControls.appendChild(button);
     });
+
 });
