@@ -8,6 +8,7 @@ import {
     Mesh,
     MeshPhongMaterial,
     MeshBasicMaterial,
+    MeshLambertMaterial,
     PlaneBufferGeometry,
     OBJLoader,
     MTLLoader,
@@ -23,7 +24,8 @@ import {
     JSONLoader,
     GeometryUtils,
     Color,
-    SpotLight
+    SpotLight,
+    Fog,
 } from 'three-full';
 import OrbitControls from './libs/OrbitControls';
 import "../assets/styles/index.scss";
@@ -83,6 +85,8 @@ class Configurator {
         const textureLoader =   new TextureLoader();
         const objLoader =       new OBJLoader();
         const spotLight =       new SpotLight(0xffffff);
+        scene.background =      new Color( 0xcce0ff );
+        scene.fog =             new Fog( 0xcce0ff, 5000, 10000 );
         spotLight.position.set( 0, 30000, 5000 );
         spotLight.intensity = 1;
         spotLight.castShadow = true;
@@ -133,7 +137,6 @@ class Configurator {
         // this.world.add(box);
         this._setCameraOptions();
         this._addBasePlane().then((group) => {
-            console.log(group);
             this.loadModel("../assets/images/23.obj");
         });
         setUpMouseHander(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp, true);
@@ -141,6 +144,17 @@ class Configurator {
     }
 
     _addBasePlane() {
+        const groundTexture = this.textureLoader.load( '../assets/images/grasslight-big.jpg' );
+        groundTexture.wrapS = groundTexture.wrapT = RepeatWrapping;
+        groundTexture.repeat.set( 25, 25 );
+        groundTexture.anisotropy = 16;
+        const groundMaterial = new MeshLambertMaterial( { map: groundTexture } );
+        const meshGround = new Mesh( new PlaneBufferGeometry( 50000, 50000), groundMaterial );
+        meshGround.position.y = - 10;
+        meshGround.rotation.x = - Math.PI / 2;
+        meshGround.receiveShadow = true;
+        this.world.add( meshGround );
+
         const material = new MeshPhongMaterial({
             color : new Color(0xffffff),
             side : DoubleSide,
@@ -163,15 +177,17 @@ class Configurator {
         this.ground = new Mesh(
             new PlaneBufferGeometry(width, height, 8, 8),
             new MeshBasicMaterial({
-                color: 0x555555,
-                map: this.textureLoader.load('../assets/images/ground.jpg')
+                // color: 0x555555,
+                // transparent: true
+                // map: this.textureLoader.load('../assets/images/ground.jpg')
             })
         );
-        this.ground.material.map.wrapS = RepeatWrapping;
-        this.ground.material.map.wrapT = RepeatWrapping;
-        this.ground.material.map.repeat.set(4, 4);
+        // this.ground.material.map.wrapS = RepeatWrapping;
+        // this.ground.material.map.wrapT = RepeatWrapping;
+        // this.ground.material.map.repeat.set(4, 4);
+        this.ground.visible = false;
         this.ground.position.y = 0;
-        this.ground.rotation.x =  -Math.PI / 2;
+        // this.ground.rotation.x =  -Math.PI / 2;
         this.ground.geometry.computeBoundingBox();
         this.ground.dragable = false;
         const v0 = this.ground.geometry.boundingBox.min;
@@ -200,6 +216,7 @@ class Configurator {
 
             Object.assign(group, {
                 dragable: false,
+                editable: false
             });
 
             this.groups.push(group);
@@ -221,6 +238,8 @@ class Configurator {
         this.camera.controls.dampingFactor  = 0.1;
         this.camera.controls.rotateSpeed    = 0.5;
         this.camera.controls.staticMoving = true;
+        this.camera.controls.minDistance = 1000;
+        this.camera.controls.maxDistance = 7000;
         this.camera.controls.minPolarAngle = Math.PI / 3;
         this.camera.controls.maxPolarAngle = Math.PI / 3;
         this.camera.controls.target.set(0, 0, 0);
@@ -427,7 +446,8 @@ class Configurator {
             });
             group.position.set(0, 0, 0);
             Object.assign(group, {
-                dragable: true
+                dragable: true,
+                editable: true
             });
 
             this.groups.push(group);
@@ -550,7 +570,7 @@ class Configurator {
             texture.wrapS = texture.wrapT = RepeatWrapping;
             this.groups.forEach((group) => {
                 group.children.forEach((mesh) => {
-                    if (mesh.name !== 'TextBox') {
+                    if (group.editable && mesh.name !== 'TextBox') {
                         mesh.material.map = texture;
                     }
                 });
