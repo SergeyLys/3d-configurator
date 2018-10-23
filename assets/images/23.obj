@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 23.10.2018 01:14:11
+# File Created: 23.10.2018 13:20:55
 
 mtllib 23+TextBoxNEW (6).mtl
 
@@ -17,10 +17,10 @@ vn -0.0000 -0.0000 1.0000
 vn 0.0000 -0.0000 1.0000
 # 2 vertex normals
 
-vt 0.2125 0.9953 0.0000
-vt 0.2135 0.0042 0.0000
-vt 0.7892 0.0047 0.0000
-vt 0.7882 0.9958 0.0000
+vt -0.0004 0.9953 0.0000
+vt 0.0012 0.0042 0.0000
+vt 0.9986 0.0047 0.0000
+vt 0.9970 0.9958 0.0000
 # 4 texture coords
 
 o TextBox
