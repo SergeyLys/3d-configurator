@@ -173,11 +173,11 @@ class Configurator {
 
         const width = parseSize(this.data.size).width * 10;
         const height = parseSize(this.data.size).height * 10;
-
+        
         this.ground = new Mesh(
             new PlaneBufferGeometry(width, height, 8, 8),
             new MeshBasicMaterial({
-                // color: 0x555555,
+                color: 0x555555,
                 // transparent: true
                 // map: this.textureLoader.load('../assets/images/ground.jpg')
             })
@@ -185,9 +185,11 @@ class Configurator {
         // this.ground.material.map.wrapS = RepeatWrapping;
         // this.ground.material.map.wrapT = RepeatWrapping;
         // this.ground.material.map.repeat.set(4, 4);
-        this.ground.visible = false;
+        // this.ground.visible = false;
+        this.ground.position.x = width / 2;
         this.ground.position.y = 0;
-        // this.ground.rotation.x =  -Math.PI / 2;
+        this.ground.position.z = height / 2;
+        this.ground.rotation.x =  -Math.PI / 2;
         this.ground.geometry.computeBoundingBox();
         this.ground.dragable = false;
         const v0 = this.ground.geometry.boundingBox.min;
@@ -229,7 +231,10 @@ class Configurator {
     }
 
     _setCameraOptions() {
-        this.camera.object.position.set( 100, 400, 3000 );
+        const width = parseSize(this.data.size).width * 10;
+        const height = parseSize(this.data.size).height * 10;
+
+        this.camera.object.position.set( width/2, 400, 3000 );
         this.camera.object.lookAt(this.scene.position);
         this.camera.controls.rotateSpeed    = 1.0;
         this.camera.controls.zoomSpeed      = 1.0;
@@ -242,7 +247,7 @@ class Configurator {
         this.camera.controls.maxDistance = 7000;
         this.camera.controls.minPolarAngle = Math.PI / 3;
         this.camera.controls.maxPolarAngle = Math.PI / 3;
-        this.camera.controls.target.set(0, 0, 0);
+        this.camera.controls.target.set(width/2, 0, height/2);
     }
 
     _doMouseDown(x,y) {
@@ -291,16 +296,20 @@ class Configurator {
         const locationZ = this.intersects[0].point.z;
         const coords = new Vector3(locationX, 0, locationZ);
         const meshBox = new Box3().setFromObject(this.dragItem).getSize(new Vector3());
+        const boundMax = this.ground.geometry.boundingBox.max;
+        const boundMin = this.ground.geometry.boundingBox.min;
 
         this.world.worldToLocal(coords);
         a = Math.min(
-            this.ground.geometry.boundingBox.max.x - (meshBox.x/2),
-            Math.max(this.ground.geometry.boundingBox.min.x + (meshBox.x/2),coords.x)
+            boundMax.x + boundMax.x - meshBox.x,
+            Math.max(boundMin.x + boundMax.x, coords.x)
         );
+
         b = Math.min(
-            this.ground.geometry.boundingBox.max.y - (meshBox.z/2),
-            Math.max(this.ground.geometry.boundingBox.min.y + (meshBox.z/2),coords.z)
+            boundMax.y + boundMax.y - meshBox.z,
+            Math.max(boundMin.y + boundMax.y, coords.z)
         );
+        console.log(a, b);
         this.dragItem.position.x = a;
         this.dragItem.position.z = b;
         // this.renderer.render(this.scene, this.camera.object);
@@ -422,6 +431,8 @@ class Configurator {
         this.objLoader.load(path, (object) => {
             object.traverse((mesh) => {
                 if (mesh instanceof Mesh) {
+                    console.log(mesh);
+
                     if (mesh.name === 'TextBox') {
 
                         mesh.material = new MeshPhongMaterial({

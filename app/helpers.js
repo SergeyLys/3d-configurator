@@ -13,9 +13,9 @@ export function getAbsolutePosition(mesh) {
 
 export function randomPointInDiapason(min, max) {
     return new Vector3(
-        Math.random() * (max.x - min.x) + min.x,
+        Math.random() * (max.x - min.x) + min.x + max.x,
         0,
-        Math.random() * (max.y - min.y) + min.y
+        Math.random() * (max.y - min.y) + min.y + max.y
     );
 }
 
@@ -29,7 +29,7 @@ export function randNum(min,max,bool) {
 
 export function parseSize(str) {
     return {
-        width: str.split('*').pop(),
+        width: str.split('*').shift(),
         height: str.split('*').pop()
     }
 }
