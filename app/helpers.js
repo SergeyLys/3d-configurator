@@ -1,4 +1,4 @@
-import { Vector3 } from 'three-full';
+import {Box3, Vector3} from 'three-full';
 
 export function getAbsolutePosition(mesh) {
     mesh.geometry.computeBoundingBox();
@@ -34,153 +34,60 @@ export function parseSize(str) {
     }
 }
 
-export function setUpMouseHander (element, mouseDownFunc, mouseDragFunc, mouseUpFunc) {
-    /*
-           element -- either the element itself or a string with the id of the element
-           mouseDownFunc(x,y,evt) -- should return a boolean to indicate whether to start a drag operation
-           mouseDragFunc(x,y,evt,prevX,prevY,startX,startY)
-           mouseUpFunc(x,y,evt,prevX,prevY,startX,startY)
-       */
-    if (!element || !mouseDownFunc || !(typeof mouseDownFunc === "function")) {
-        throw "Illegal arguments in setUpMouseHander";
+export function concatArray(arr) {
+    if (Array.isArray(arr)) {
+        return arr.reduce(function(done,curr){
+            return done.concat(concatArray(curr));
+        }, []);
+    } else {
+        return arr;
     }
-    if (typeof element === "string") {
-        element = document.getElementById(element);
-    }
-    if (!element || !element.addEventListener) {
-        throw "first argument in setUpMouseHander is not a valid element";
-    }
-    let dragging = false;
-    let startX, startY;
-    let prevX, prevY;
-
-    function doMouseDown(evt) {
-        if (dragging) {
-            return;
-        }
-        const r = element.getBoundingClientRect();
-        const x = evt.clientX - r.left;
-        const y = evt.clientY - r.top;
-        prevX = startX = x;
-        prevY = startY = y;
-        dragging = mouseDownFunc(x, y, evt);
-        if (dragging) {
-            document.addEventListener("mousemove", doMouseMove);
-            document.addEventListener("mouseup", doMouseUp);
-        }
-    }
-
-    function doMouseMove(evt) {
-        if (dragging) {
-            let x;
-            let y;
-            if (mouseDragFunc) {
-                const r = element.getBoundingClientRect();
-                x = evt.clientX - r.left;
-                y = evt.clientY - r.top;
-                mouseDragFunc(x, y, evt, prevX, prevY, startX, startY);
-            }
-            prevX = x;
-            prevY = y;
-        }
-    }
-
-    function doMouseUp(evt) {
-        if (dragging) {
-            document.removeEventListener("mousemove", doMouseMove);
-            document.removeEventListener("mouseup", doMouseUp);
-            if (mouseUpFunc) {
-                const r = element.getBoundingClientRect();
-                const x = evt.clientX - r.left;
-                const y = evt.clientY - r.top;
-                mouseUpFunc(x, y, evt, prevX, prevY, startX, startY);
-            }
-            dragging = false;
-        }
-    }
-    element.addEventListener("mousedown", doMouseDown);
-    element.addEventListener("mouseup", doMouseUp);
 }
 
-export function setUpTouchHander (element, touchStartFunc, touchMoveFunc, touchEndFunc, touchCancelFunc) {
-    /*
-           element -- either the element itself or a string with the id of the element
-           touchStartFunc(x,y,evt) -- should return a boolean to indicate whether to start a drag operation
-           touchMoveFunc(x,y,evt,prevX,prevY,startX,startY)
-           touchEndFunc(evt,prevX,prevY,startX,startY)
-           touchCancelFunc()   // no parameters
-       */
-    if (!element || !touchStartFunc || !(typeof touchStartFunc === "function")) {
-        throw "Illegal arguments in setUpTouchHander";
+export function parseData(data) {
+    if (data.parts && data.parts.length) {
+        return concatArray(
+            data.parts.map((part, i) => {
+                if (part.parts && part.parts.length) {
+                    return parseData(part);
+                }
+                return part;
+            })
+        ).filter((part) => part.model.src_threejs)
     }
-    if (typeof element === "string") {
-        element = document.getElementById(element);
-    }
-    if (!element || !element.addEventListener) {
-        throw "first argument in setUpTouchHander is not a valid element";
-    }
-    let dragging = false;
-    let startX, startY;
-    let prevX, prevY;
+}
 
-    function doTouchStart(evt) {
-        if (evt.touches.length !== 1) {
-            doTouchEnd(evt);
-            return;
-        }
-        evt.preventDefault();
-        if (dragging) {
-            doTouchEnd();
-        }
-        const r = element.getBoundingClientRect();
-        const x = evt.touches[0].clientX - r.left;
-        const y = evt.touches[0].clientY - r.top;
-        prevX = startX = x;
-        prevY = startY = y;
-        dragging = touchStartFunc(x, y, evt);
-        if (dragging) {
-            element.addEventListener("touchmove", doTouchMove);
-            element.addEventListener("touchend", doTouchEnd);
-            element.addEventListener("touchcancel", doTouchCancel);
-        }
-    }
+export function getCenterPoint(mesh) {
+    const geometry = mesh.geometry;
+    geometry.computeBoundingBox();
+    const center = geometry.boundingBox.getCenter();
+    mesh.localToWorld( center );
+    return center;
+}
 
-    function doTouchMove(evt) {
-        if (dragging) {
-            let x;
-            let y;
-            if (evt.touches.length !== 1) {
-                doTouchEnd(evt);
-                return;
-            }
-            evt.preventDefault();
-            if (touchMoveFunc) {
-                const r = element.getBoundingClientRect();
-                x = evt.touches[0].clientX - r.left;
-                y = evt.touches[0].clientY - r.top;
-                touchMoveFunc(x, y, evt, prevX, prevY, startX, startY);
-            }
-            prevX = x;
-            prevY = y;
-        }
-    }
+export function calculateCanvasFramePosition(currentMesh, camera, width, height) {
+    const absoluteCoords = new Vector3(
+        currentMesh.absoluteCoords.x,
+        currentMesh.absoluteCoords.y,
+        currentMesh.absoluteCoords.z
+    );
+    const widthHalf = width / 2, heightHalf = height / 2;
+    const meshBox = new Box3().setFromObject(currentMesh);
+    const vFOV = camera.fov * Math.PI / 180;
+    const meshHeight = 2 * Math.tan(vFOV / 2) * (absoluteCoords.distanceTo(camera.position));
+    const meshWidth = meshHeight * camera.aspect;
+    const fractionHeight = meshBox.getSize(new Vector3()).y / meshHeight;
+    const fractionWidth = Math.max(meshBox.getSize(new Vector3()).x, meshBox.getSize(new Vector3()).z) / meshWidth;
+    const pos = absoluteCoords.clone();
 
-    function doTouchCancel() {
-        if (touchCancelFunc) {
-            touchCancelFunc();
-        }
-    }
+    pos.project(camera);
+    pos.x = (pos.x * widthHalf) + widthHalf;
+    pos.y = -(pos.y * heightHalf) + heightHalf;
 
-    function doTouchEnd(evt) {
-        if (dragging) {
-            dragging = false;
-            element.removeEventListener("touchmove", doTouchMove);
-            element.removeEventListener("touchend", doTouchEnd);
-            element.removeEventListener("touchcancel", doTouchCancel);
-            if (touchEndFunc) {
-                touchEndFunc(evt, prevX, prevY, startX, startY);
-            }
-        }
+    return {
+        width: width * fractionWidth,
+        height: height * fractionHeight,
+        left: pos.x - (width * fractionWidth) / 2,
+        top: pos.y - (height * fractionHeight) / 2
     }
-    element.addEventListener("touchstart", doTouchStart);
 }
