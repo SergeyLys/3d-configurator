@@ -47,13 +47,13 @@ export function concatArray(arr) {
 export function parseData(data) {
     if (data.parts && data.parts.length) {
         return concatArray(
-            data.parts.map((part, i) => {
+            data.parts.map((part) => {
                 if (part.parts && part.parts.length) {
                     return parseData(part);
                 }
                 return part;
             })
-        ).filter((part) => part.model.src_threejs)
+        ).filter((part) => part.model.src_threejs && part.parent_id)
     }
 }
 

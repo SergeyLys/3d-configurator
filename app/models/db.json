@@ -34,7 +34,7 @@
         "material": {
           "title": "Габбро-Диабаз",
           "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+          "src_threejs": "../assets/images/1.jpg",
           "id": "diabaz",
           "type": "material"
         },
@@ -55,36 +55,16 @@
               "constant_materials": [
                 {
                   "material": {
-                    "title": "Дымовский",
-                    "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                    "id": "dymovsky",
-                    "type": "material"
-                  },
-                  "mashname": "constant_material_mashname1"
-                },
-                {
-                  "material": {
-                    "title": "Дымовский",
-                    "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                    "id": "dymovsky",
-                    "type": "material"
-                  },
-                  "mashname": "constant_material_mashname2"
-                },
-                {
-                  "material": {
                     "title": "Без материала",
                     "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                    "src_threejs": "../assets/images/transparent.png",
                     "id": "transparent",
                     "type": "material"
                   },
-                  "mashname": "front"
+                  "mashname": "TextBox"
                 }
               ],
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+              "src_threejs": "../assets/images/23.obj",
               "default_position": {
                 "x": -50,
                 "x_threejs": 0,
@@ -570,7 +550,7 @@
             "material": {
               "title": "Габбро-Диабаз",
               "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+              "src_threejs": "../assets/images/1.jpg",
               "id": "diabaz",
               "type": "material"
             },
@@ -622,7 +602,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -635,7 +615,7 @@
             "material": {
               "title": "Габбро-Диабаз",
               "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+              "src_threejs": "../assets/images/1.jpg",
               "id": "diabaz",
               "type": "material"
             },
@@ -688,7 +668,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -712,7 +692,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -739,7 +719,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -766,7 +746,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -793,7 +773,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -820,7 +800,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -844,7 +824,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -870,7 +850,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -896,7 +876,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -922,7 +902,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -948,7 +928,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -966,7 +946,7 @@
             "material": {
               "title": "Габбро-Диабаз",
               "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+              "src_threejs": "../assets/images/1.jpg",
               "id": "diabaz",
               "type": "material"
             },
@@ -994,13 +974,14 @@
       "material": {
         "title": "Габбро-Диабаз",
         "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+        "src_threejs": "../assets/images/1.jpg",
         "id": "diabaz",
         "type": "material"
       },
       "parts": [
         {
           "id": "treeroot_0_0_",
+          "parent_id": "treeroot_0_",
           "hidden": false,
           "open": false,
           "active": true,
@@ -1031,36 +1012,16 @@
             "constant_materials": [
               {
                 "material": {
-                  "title": "Дымовский",
-                  "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                  "id": "dymovsky",
-                  "type": "material"
-                },
-                "mashname": "constant_material_mashname1"
-              },
-              {
-                "material": {
-                  "title": "Дымовский",
-                  "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                  "id": "dymovsky",
-                  "type": "material"
-                },
-                "mashname": "constant_material_mashname2"
-              },
-              {
-                "material": {
                   "title": "Без материала",
                   "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                  "src_threejs": "../assets/images/transparent.png",
                   "id": "transparent",
                   "type": "material"
                 },
                 "mashname": "front"
               }
             ],
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+            "src_threejs": "../assets/images/23.obj",
             "default_position": {
               "x": -50,
               "x_threejs": 0,
@@ -1594,7 +1555,7 @@
           "material": {
             "title": "Габбро-Диабаз",
             "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+            "src_threejs": "../assets/images/1.jpg",
             "id": "diabaz",
             "type": "material"
           },
@@ -1964,6 +1925,7 @@
         },
         {
           "id": "treeroot_0_1_",
+          "parent_id": "treeroot_0_",
           "hidden": false,
           "open": false,
           "active": true,
@@ -1984,85 +1946,926 @@
           "mobility_mashname": "uchastok",
           "threejs_type": "3d",
           "model": {
-            "title": "Подставка",
+            "title": "stela1",
             "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-            "id": "podstavka_1",
-            "type": "podstavka",
+            "id": "stela_1",
+            "type": "stela",
             "position": {},
-            "tag": "",
-            "parts": [
+            "mobility_mashname": "uchastok",
+            "threejs_type": "3d",
+            "constant_materials": [
               {
-                "localid": "parts_0",
-                "title": "заготовка подставки",
-                "SOtype": "branch",
-                "model": {
-                  "title": "заготовка подставки",
-                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                  "id": "parts_zagotovka_podstavki",
-                  "type": "parts",
-                  "position": {},
-                  "tag": "",
-                  "parts": [],
-                  "portraits": [],
-                  "texts": []
-                },
                 "material": {
-                  "title": "Габбро-Диабаз",
-                  "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                  "id": "diabaz",
+                  "title": "Без материала",
+                  "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
+                  "src_threejs": "../assets/images/transparent.png",
+                  "id": "transparent",
                   "type": "material"
                 },
-                "position": {}
+                "mashname": "TextBox"
               }
             ],
-            "portraits": [],
-            "texts": []
+            "src_threejs": "../assets/images/23.obj",
+            "default_position": {
+              "x": -50,
+              "x_threejs": 0,
+              "y": 0,
+              "y_threejs": 0,
+              "z": -50,
+              "z_threejs": 100,
+              "scale_x": 0,
+              "scale_y": 0,
+              "scale_z": 0,
+              "rotation_x": 0,
+              "rotation_y": 0,
+              "rotation_z": 0
+            },
+            "tag": "vertical, krest",
+            "SOtype": "model",
+            "parts": [],
+            "portraits": [
+              {
+                "role": "portrait",
+                "localid": "portrait_1",
+                "title": "Портрет",
+                "SOtype": "model",
+                "model": {
+                  "title": "Портрет теневой стандартный",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                  "id": "portrait_1",
+                  "type": "portrait",
+                  "position": {},
+                  "tag": "portrait"
+                },
+                "portraitcolour": "черно-белый теневой портрет",
+                "size": "А4",
+                "mobility_mashname": "front",
+                "threejs_type": "2dtexture",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": true,
+                "adding_title": "Добавить портрет",
+                "adding_unique": false
+              },
+              {
+                "role": "portrait",
+                "localid": "portrait_3",
+                "title": "Портрет",
+                "SOtype": "model",
+                "model": {
+                  "title": "Портрет теневой стандартный",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                  "id": "portrait_1",
+                  "type": "portrait",
+                  "position": {},
+                  "tag": "portrait"
+                },
+                "fotokeramikacolour": "красный",
+                "fotokeramikaproducer": "russia",
+                "size": "А4",
+                "mobility_mashname": "front",
+                "threejs_type": "2dtexture",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": true,
+                "adding_title": "Добавить портрет",
+                "adding_unique": false
+              },
+              {
+                "role": "portrait",
+                "localid": "portrait_1",
+                "title": "Добавить портрет",
+                "SOtype": "model",
+                "model": {
+                  "title": "Нажмите для того чтобы выбрать \"Портрет\"",
+                  "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                  "id": "empty_portrait",
+                  "type": "portrait",
+                  "position": {},
+                  "SOtype": "model"
+                },
+                "portraitcolour": "черно-белый теневой портрет",
+                "size": "А4",
+                "mobility_mashname": "front",
+                "threejs_type": "2dtexture",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": false,
+                "adding_title": "",
+                "adding_unique": true,
+                "adding_added": true,
+                "adding_titlewhenfilled": "Портрет"
+              },
+              {
+                "role": "portrait",
+                "localid": "portrait_3",
+                "title": "Добавить портрет",
+                "SOtype": "model",
+                "model": {
+                  "title": "Нажмите для того чтобы выбрать \"Портрет\"",
+                  "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                  "id": "empty_portrait",
+                  "type": "portrait",
+                  "position": {},
+                  "SOtype": "model"
+                },
+                "fotokeramikacolour": "красный",
+                "fotokeramikaproducer": "russia",
+                "size": "А4",
+                "mobility_mashname": "front",
+                "threejs_type": "2dtexture",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": false,
+                "adding_title": "",
+                "adding_unique": true,
+                "adding_added": true,
+                "adding_titlewhenfilled": "Портрет"
+              }
+            ],
+            "texts": [
+              {
+                "role": "nadpis",
+                "localid": "FIO_1",
+                "title": "ФИО",
+                "SOtype": "model",
+                "model": {
+                  "title": "Академия",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "arial",
+                  "id": "nadpis_akademiya",
+                  "type": "nadpis",
+                  "position": {},
+                  "tag": "nadpis"
+                },
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "glubina": "obychniy",
+                "value": "Иванов Иван Иванович",
+                "mobility_mashname": "front",
+                "threejs_type": "text",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": true,
+                "adding_title": "add FIO",
+                "adding_unique": false
+              },
+              {
+                "role": "nadpis",
+                "localid": "Gody_1",
+                "title": "Годы",
+                "SOtype": "model",
+                "model": {
+                  "title": "Академия",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "arial",
+                  "id": "nadpis_akademiya",
+                  "type": "nadpis",
+                  "position": {},
+                  "tag": "nadpis"
+                },
+                "material": "susalnoe_zoloto",
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "glubina": "obychniy",
+                "value": "01.01.1900-01.01.01.2999",
+                "mobility_mashname": "front",
+                "threejs_type": "text",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": true,
+                "adding_title": "Добавить daty",
+                "adding_unique": false
+              },
+              {
+                "role": "nadpis",
+                "localid": "FIO_2",
+                "title": "ФИО 2",
+                "SOtype": "model",
+                "model": {
+                  "title": "Академия",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "arial",
+                  "id": "nadpis_akademiya",
+                  "type": "nadpis",
+                  "position": {},
+                  "tag": "nadpis"
+                },
+                "material": "susalnoe_zoloto",
+                "glubina": "obychniy",
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "value": "Иванов Иван Иванович",
+                "mobility_mashname": "front",
+                "threejs_type": "text",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                }
+              },
+              {
+                "role": "nadpis",
+                "localid": "Gody_2",
+                "title": "Годы 2",
+                "SOtype": "model",
+                "model": {
+                  "title": "Академия",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "arial",
+                  "id": "nadpis_akademiya",
+                  "type": "nadpis",
+                  "position": {},
+                  "tag": "nadpis"
+                },
+                "material": "susalnoe_zoloto",
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "glubina": "obychniy",
+                "value": "01.01.1900-01.01.01.2999",
+                "mobility_mashname": "front",
+                "threejs_type": "text",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                }
+              },
+              {
+                "role": "nadpis",
+                "localid": "FIO_1",
+                "title": "add FIO",
+                "SOtype": "model",
+                "model": {
+                  "title": "Нажмите для того чтобы выбрать \"Надпись\"",
+                  "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                  "id": "empty_nadpis",
+                  "type": "nadpis",
+                  "position": {},
+                  "SOtype": "model"
+                },
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "glubina": "obychniy",
+                "value": "Иванов Иван Иванович",
+                "mobility_mashname": "front",
+                "threejs_type": "text",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": false,
+                "adding_title": "",
+                "adding_unique": true,
+                "adding_added": true,
+                "adding_titlewhenfilled": "ФИО"
+              },
+              {
+                "role": "nadpis",
+                "localid": "Gody_1",
+                "title": "Добавить daty",
+                "SOtype": "model",
+                "model": {
+                  "title": "Нажмите для того чтобы выбрать \"Надпись\"",
+                  "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                  "id": "empty_nadpis",
+                  "type": "nadpis",
+                  "position": {},
+                  "SOtype": "model"
+                },
+                "material": "susalnoe_zoloto",
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "glubina": "obychniy",
+                "value": "01.01.1900-01.01.01.2999",
+                "mobility_mashname": "front",
+                "threejs_type": "text",
+                "position": {
+                  "x": 0,
+                  "x_threejs": 0,
+                  "y": 0,
+                  "y_threejs": 0,
+                  "z": 0,
+                  "z_threejs": 0,
+                  "scale_x": 0,
+                  "scale_y": 0,
+                  "scale_z": 0,
+                  "rotation_x": 0,
+                  "rotation_y": 0,
+                  "rotation_z": 0
+                },
+                "adding_allow": false,
+                "adding_title": "",
+                "adding_unique": true,
+                "adding_added": true,
+                "adding_titlewhenfilled": "Годы"
+              }
+            ],
+            "portraits_groupactions": [
+              {
+                "name": "portraits_groupactions",
+                "title": "Изменить для всех портретов стелы",
+                "model": {
+                  "title": "Портрет теневой стандартный",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                  "id": "portrait_1",
+                  "type": "portrait",
+                  "position": {},
+                  "tag": "portrait"
+                },
+                "fotokeramikacolour": "красный",
+                "fotokeramikaproducer": "russia",
+                "size": "А4",
+                "portraitcolour": "черно-белый теневой портрет",
+                "localid": "main"
+              }
+            ],
+            "texts_groupactions": [
+              {
+                "name": "texts_groupactions",
+                "title": "Изменить для всех надписей стелы",
+                "model": {
+                  "title": "Академия",
+                  "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                  "src_threejs": "arial",
+                  "id": "nadpis_akademiya",
+                  "type": "nadpis",
+                  "position": {},
+                  "tag": "nadpis"
+                },
+                "nadpis_nanesenie": "peskostruynaya",
+                "nadpis_pokrytye": "",
+                "glubina": "obychniy",
+                "localid": "main"
+              }
+            ],
+            "groupactions": [
+              {
+                "name": "groupactions",
+                "role": "portrait",
+                "where": "portraits",
+                "whatchanging": [
+                  {
+                    "model": {
+                      "title": "Портрет теневой стандартный",
+                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                      "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                      "id": "portrait_1",
+                      "type": "portrait",
+                      "position": {},
+                      "tag": "portrait"
+                    },
+                    "title": "vyberite portret",
+                    "size": "9*12",
+                    "localid": "portraits_portrait_size",
+                    "objecttype": "portrait"
+                  }
+                ]
+              },
+              {
+                "role": "nadpis",
+                "where": "texts",
+                "whatchanging": [
+                  {
+                    "localid": "texts_nadpis_shrift",
+                    "objecttype": "nadpis",
+                    "value": "01.01.1900-01.01.01.2999",
+                    "model": {
+                      "title": "Академия",
+                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                      "src_threejs": "arial",
+                      "id": "nadpis_akademiya",
+                      "type": "nadpis",
+                      "position": {},
+                      "tag": "nadpis"
+                    },
+                    "title": "vyberite nadpis"
+                  }
+                ]
+              }
+            ]
           },
-          "title": "подставка",
-          "size": "60*12*15",
-          "localid": "parts_1",
-          "material": {
-            "title": "Габбро-Диабаз",
-            "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-            "id": "diabaz",
-            "type": "material"
-          },
-          "parts": [
+          "title": "стела",
+          "size": "100*50*5",
+          "localid": "parts_0",
+          "portraits_groupactions": [
             {
-              "id": "treeroot_0_1_0_",
+              "name": "portraits_groupactions",
+              "title": "Изменить для всех портретов стелы",
+              "model": {
+                "title": "Портрет теневой стандартный",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                "id": "portrait_1",
+                "type": "portrait",
+                "position": {},
+                "tag": "portrait"
+              },
+              "size": "А4",
+              "fotokeramikacolour": "красный",
+              "fotokeramikaproducer": "russia",
+              "portraitcolour": "черно-белый теневой портрет",
               "hidden": false,
               "open": false,
               "active": true,
-              "position": {},
-              "model": {
-                "title": "заготовка подставки",
-                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                "id": "parts_zagotovka_podstavki",
-                "type": "parts",
-                "position": {},
-                "tag": "",
-                "parts": [],
-                "portraits": [],
-                "texts": []
-              },
-              "title": "заготовка подставки",
-              "localid": "parts_0",
-              "material": {
-                "title": "Габбро-Диабаз",
-                "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                "id": "diabaz",
-                "type": "material"
-              },
-              "parts": [],
-              "portraits": [],
-              "texts": []
+              "id": "treeroot_0_0_portraits_groupactions_0_"
             }
           ],
-          "portraits": [],
-          "texts": []
+          "texts_groupactions": [
+            {
+              "name": "texts_groupactions",
+              "title": "Изменить для всех надписей стелы",
+              "model": {
+                "title": "Академия",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "arial",
+                "id": "nadpis_akademiya",
+                "type": "nadpis",
+                "position": {},
+                "tag": "nadpis"
+              },
+              "nadpis_nanesenie": "peskostruynaya",
+              "nadpis_pokrytye": "",
+              "glubina": "obychniy",
+              "hidden": false,
+              "open": false,
+              "active": true,
+              "id": "treeroot_0_0_texts_groupactions_0_"
+            }
+          ],
+          "material": {
+            "title": "Габбро-Диабаз",
+            "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+            "src_threejs": "../assets/images/1.jpg",
+            "id": "diabaz",
+            "type": "material"
+          },
+          "parts": [],
+          "portraits": [
+            {
+              "id": "treeroot_0_0_portraits_0_",
+              "model": {
+                "title": "Портрет теневой стандартный",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                "id": "portrait_1",
+                "type": "portrait",
+                "position": {},
+                "tag": "portrait"
+              },
+              "title": "Портрет",
+              "size": "А4",
+              "localid": "portrait_1",
+              "role": "portrait",
+              "portraitcolour": "черно-белый теневой портрет",
+              "adding_allow": true,
+              "adding_title": "Добавить портрет",
+              "adding_unique": false,
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "threejs_type": "2dtexture",
+              "mobility_mashname": "front"
+            },
+            {
+              "id": "treeroot_0_0_portraits_1_",
+              "model": {
+                "title": "Портрет теневой стандартный",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                "id": "portrait_1",
+                "type": "portrait",
+                "position": {},
+                "tag": "portrait"
+              },
+              "title": "Портрет",
+              "size": "А4",
+              "localid": "portrait_3",
+              "role": "portrait",
+              "fotokeramikacolour": "красный",
+              "fotokeramikaproducer": "russia",
+              "adding_allow": true,
+              "adding_title": "Добавить портрет",
+              "adding_unique": false,
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "threejs_type": "2dtexture",
+              "mobility_mashname": "front"
+            },
+            {
+              "id": "treeroot_0_0_portraits_2_",
+              "model": {
+                "title": "Нажмите для того чтобы выбрать \"Портрет\"",
+                "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                "id": "empty_portrait",
+                "type": "portrait",
+                "position": {},
+                "SOtype": "model"
+              },
+              "title": "Добавить портрет",
+              "size": "А4",
+              "localid": "portrait_1",
+              "role": "portrait",
+              "portraitcolour": "черно-белый теневой портрет",
+              "adding_added": true,
+              "adding_allow": false,
+              "adding_title": "",
+              "adding_unique": true,
+              "adding_titlewhenfilled": "Портрет",
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "threejs_type": "2dtexture",
+              "mobility_mashname": "front"
+            },
+            {
+              "id": "treeroot_0_0_portraits_3_",
+              "model": {
+                "title": "Нажмите для того чтобы выбрать \"Портрет\"",
+                "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                "id": "empty_portrait",
+                "type": "portrait",
+                "position": {},
+                "SOtype": "model"
+              },
+              "title": "Добавить портрет",
+              "size": "А4",
+              "localid": "portrait_3",
+              "role": "portrait",
+              "fotokeramikacolour": "красный",
+              "fotokeramikaproducer": "russia",
+              "adding_added": true,
+              "adding_allow": false,
+              "adding_title": "",
+              "adding_unique": true,
+              "adding_titlewhenfilled": "Портрет",
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "threejs_type": "2dtexture",
+              "mobility_mashname": "front"
+            }
+          ],
+          "texts": [
+            {
+              "id": "treeroot_0_0_texts_0_",
+              "model": {
+                "title": "Академия",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "arial",
+                "id": "nadpis_akademiya",
+                "type": "nadpis",
+                "position": {},
+                "tag": "nadpis"
+              },
+              "title": "ФИО",
+              "value": "Иванов Иван Иванович",
+              "localid": "FIO_1",
+              "role": "nadpis",
+              "adding_allow": true,
+              "adding_title": "add FIO",
+              "adding_unique": false,
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "mobility_mashname": "front",
+              "threejs_type": "text"
+            },
+            {
+              "id": "treeroot_0_0_texts_1_",
+              "model": {
+                "title": "Академия",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "arial",
+                "id": "nadpis_akademiya",
+                "type": "nadpis",
+                "position": {},
+                "tag": "nadpis"
+              },
+              "material": "susalnoe_zoloto",
+              "title": "Годы",
+              "value": "01.01.1900-01.01.01.2999",
+              "localid": "Gody_1",
+              "role": "nadpis",
+              "adding_allow": true,
+              "adding_title": "Добавить daty",
+              "adding_unique": false,
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "mobility_mashname": "front",
+              "threejs_type": "text"
+            },
+            {
+              "id": "treeroot_0_0_texts_2_",
+              "model": {
+                "title": "Академия",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "arial",
+                "id": "nadpis_akademiya",
+                "type": "nadpis",
+                "position": {},
+                "tag": "nadpis"
+              },
+              "material": "susalnoe_zoloto",
+              "title": "ФИО 2",
+              "value": "Иванов Иван Иванович",
+              "localid": "FIO_2",
+              "role": "nadpis",
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "mobility_mashname": "front",
+              "threejs_type": "text"
+            },
+            {
+              "id": "treeroot_0_0_texts_3_",
+              "model": {
+                "title": "Академия",
+                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
+                "src_threejs": "arial",
+                "id": "nadpis_akademiya",
+                "type": "nadpis",
+                "position": {},
+                "tag": "nadpis"
+              },
+              "material": "susalnoe_zoloto",
+              "title": "Годы 2",
+              "value": "01.01.1900-01.01.01.2999",
+              "localid": "Gody_2",
+              "role": "nadpis",
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "mobility_mashname": "front",
+              "threejs_type": "text"
+            },
+            {
+              "id": "treeroot_0_0_texts_4_",
+              "model": {
+                "title": "Нажмите для того чтобы выбрать \"Надпись\"",
+                "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                "id": "empty_nadpis",
+                "type": "nadpis",
+                "position": {},
+                "SOtype": "model"
+              },
+              "title": "add FIO",
+              "value": "Иванов Иван Иванович",
+              "localid": "FIO_1",
+              "role": "nadpis",
+              "adding_added": true,
+              "adding_allow": false,
+              "adding_title": "",
+              "adding_unique": true,
+              "adding_titlewhenfilled": "ФИО",
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "mobility_mashname": "front",
+              "threejs_type": "text"
+            },
+            {
+              "id": "treeroot_0_0_texts_5_",
+              "model": {
+                "title": "Нажмите для того чтобы выбрать \"Надпись\"",
+                "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
+                "id": "empty_nadpis",
+                "type": "nadpis",
+                "position": {},
+                "SOtype": "model"
+              },
+              "material": "susalnoe_zoloto",
+              "title": "Добавить daty",
+              "value": "01.01.1900-01.01.01.2999",
+              "localid": "Gody_1",
+              "role": "nadpis",
+              "adding_added": true,
+              "adding_allow": false,
+              "adding_title": "",
+              "adding_unique": true,
+              "adding_titlewhenfilled": "Годы",
+              "position": {
+                "x": 0,
+                "x_threejs": 0,
+                "y": 0,
+                "y_threejs": 0,
+                "z": 0,
+                "z_threejs": 0,
+                "scale_x": 0,
+                "scale_y": 0,
+                "scale_z": 0,
+                "rotation_x": 0,
+                "rotation_y": 0,
+                "rotation_z": 0
+              },
+              "mobility_mashname": "front",
+              "threejs_type": "text"
+            }
+          ]
         },
         {
           "id": "treeroot_0_2_",
@@ -2112,7 +2915,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2136,7 +2939,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2163,7 +2966,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2190,7 +2993,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2217,7 +3020,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2244,7 +3047,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2268,7 +3071,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2294,7 +3097,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2320,7 +3123,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2346,7 +3149,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2372,7 +3175,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -2393,7 +3196,7 @@
           "material": {
             "title": "Габбро-Диабаз",
             "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+            "src_threejs": "../assets/images/1.jpg",
             "id": "diabaz",
             "type": "material"
           },
@@ -2420,7 +3223,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2453,7 +3256,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2486,7 +3289,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2519,7 +3322,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2552,7 +3355,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2585,7 +3388,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2617,7 +3420,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2647,7 +3450,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2677,7 +3480,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2707,7 +3510,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2737,7 +3540,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -2785,7 +3588,7 @@
         "material": {
           "title": "Габбро-Диабаз",
           "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+          "src_threejs": "../assets/images/1.jpg",
           "id": "diabaz",
           "type": "material"
         },
@@ -2836,7 +3639,7 @@
                         "material": {
                           "title": "Дымовский",
                           "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                          "src_threejs": "../assets/images/1.jpg",
                           "id": "dymovsky",
                           "type": "material"
                         },
@@ -2846,7 +3649,7 @@
                         "material": {
                           "title": "Дымовский",
                           "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                          "src_threejs": "../assets/images/1.jpg",
                           "id": "dymovsky",
                           "type": "material"
                         },
@@ -2856,14 +3659,14 @@
                         "material": {
                           "title": "Без материала",
                           "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                          "src_threejs": "../assets/images/transparent.png",
                           "id": "transparent",
                           "type": "material"
                         },
                         "mashname": "front"
                       }
                     ],
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                    "src_threejs": "../assets/images/23.obj",
                     "default_position": {
                       "x": 0,
                       "x_threejs": 0,
@@ -3305,7 +4108,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -3344,7 +4147,7 @@
                         "material": {
                           "title": "Дымовский",
                           "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                          "src_threejs": "../assets/images/1.jpg",
                           "id": "dymovsky",
                           "type": "material"
                         },
@@ -3354,7 +4157,7 @@
                         "material": {
                           "title": "Дымовский",
                           "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                          "src_threejs": "../assets/images/1.jpg",
                           "id": "dymovsky",
                           "type": "material"
                         },
@@ -3364,14 +4167,14 @@
                         "material": {
                           "title": "Без материала",
                           "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                          "src_threejs": "../assets/images/transparent.png",
                           "id": "transparent",
                           "type": "material"
                         },
                         "mashname": "front"
                       }
                     ],
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                    "src_threejs": "../assets/images/23.obj",
                     "default_position": {
                       "x": 0,
                       "x_threejs": 0,
@@ -3625,7 +4428,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -3664,7 +4467,7 @@
                         "material": {
                           "title": "Дымовский",
                           "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                          "src_threejs": "../assets/images/1.jpg",
                           "id": "dymovsky",
                           "type": "material"
                         },
@@ -3674,7 +4477,7 @@
                         "material": {
                           "title": "Дымовский",
                           "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                          "src_threejs": "../assets/images/1.jpg",
                           "id": "dymovsky",
                           "type": "material"
                         },
@@ -3684,14 +4487,14 @@
                         "material": {
                           "title": "Без материала",
                           "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                          "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                          "src_threejs": "../assets/images/transparent.png",
                           "id": "transparent",
                           "type": "material"
                         },
                         "mashname": "front"
                       }
                     ],
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                    "src_threejs": "../assets/images/23.obj",
                     "default_position": {
                       "x": 0,
                       "x_threejs": 0,
@@ -4133,7 +4936,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4162,7 +4965,7 @@
             "material": {
               "title": "Габбро-Диабаз",
               "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+              "src_threejs": "../assets/images/1.jpg",
               "id": "diabaz",
               "type": "material"
             },
@@ -4214,7 +5017,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4227,7 +5030,7 @@
             "material": {
               "title": "Габбро-Диабаз",
               "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+              "src_threejs": "../assets/images/1.jpg",
               "id": "diabaz",
               "type": "material"
             },
@@ -4280,7 +5083,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4304,7 +5107,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4331,7 +5134,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4358,7 +5161,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4385,7 +5188,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4412,7 +5215,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4436,7 +5239,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4462,7 +5265,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4488,7 +5291,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4514,7 +5317,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4540,7 +5343,7 @@
                   "material": {
                     "title": "Габбро-Диабаз",
                     "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                    "src_threejs": "../assets/images/1.jpg",
                     "id": "diabaz",
                     "type": "material"
                   },
@@ -4558,7 +5361,7 @@
             "material": {
               "title": "Габбро-Диабаз",
               "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-              "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+              "src_threejs": "../assets/images/1.jpg",
               "id": "diabaz",
               "type": "material"
             },
@@ -4586,7 +5389,7 @@
       "material": {
         "title": "Габбро-Диабаз",
         "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+        "src_threejs": "../assets/images/1.jpg",
         "id": "diabaz",
         "type": "material"
       },
@@ -4653,7 +5456,7 @@
                       "material": {
                         "title": "Дымовский",
                         "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                        "src_threejs": "../assets/images/1.jpg",
                         "id": "dymovsky",
                         "type": "material"
                       },
@@ -4663,7 +5466,7 @@
                       "material": {
                         "title": "Дымовский",
                         "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                        "src_threejs": "../assets/images/1.jpg",
                         "id": "dymovsky",
                         "type": "material"
                       },
@@ -4673,14 +5476,14 @@
                       "material": {
                         "title": "Без материала",
                         "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                        "src_threejs": "../assets/images/transparent.png",
                         "id": "transparent",
                         "type": "material"
                       },
                       "mashname": "front"
                     }
                   ],
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                  "src_threejs": "../assets/images/23.obj",
                   "default_position": {
                     "x": 0,
                     "x_threejs": 0,
@@ -5122,7 +5925,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -5161,7 +5964,7 @@
                       "material": {
                         "title": "Дымовский",
                         "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                        "src_threejs": "../assets/images/1.jpg",
                         "id": "dymovsky",
                         "type": "material"
                       },
@@ -5171,7 +5974,7 @@
                       "material": {
                         "title": "Дымовский",
                         "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                        "src_threejs": "../assets/images/1.jpg",
                         "id": "dymovsky",
                         "type": "material"
                       },
@@ -5181,14 +5984,14 @@
                       "material": {
                         "title": "Без материала",
                         "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                        "src_threejs": "../assets/images/transparent.png",
                         "id": "transparent",
                         "type": "material"
                       },
                       "mashname": "front"
                     }
                   ],
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                  "src_threejs": "../assets/images/23.obj",
                   "default_position": {
                     "x": 0,
                     "x_threejs": 0,
@@ -5442,7 +6245,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -5481,7 +6284,7 @@
                       "material": {
                         "title": "Дымовский",
                         "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                        "src_threejs": "../assets/images/1.jpg",
                         "id": "dymovsky",
                         "type": "material"
                       },
@@ -5491,7 +6294,7 @@
                       "material": {
                         "title": "Дымовский",
                         "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                        "src_threejs": "../assets/images/1.jpg",
                         "id": "dymovsky",
                         "type": "material"
                       },
@@ -5501,14 +6304,14 @@
                       "material": {
                         "title": "Без материала",
                         "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                        "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                        "src_threejs": "../assets/images/transparent.png",
                         "id": "transparent",
                         "type": "material"
                       },
                       "mashname": "front"
                     }
                   ],
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                  "src_threejs": "../assets/images/23.obj",
                   "default_position": {
                     "x": 0,
                     "x_threejs": 0,
@@ -5950,7 +6753,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -5982,930 +6785,11 @@
           "material": {
             "title": "Габбро-Диабаз",
             "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+            "src_threejs": "../assets/images/1.jpg",
             "id": "diabaz",
             "type": "material"
           },
           "parts": [
-            {
-              "id": "treeroot_1_0_0_",
-              "hidden": false,
-              "open": false,
-              "active": true,
-              "position": {
-                "x": 70,
-                "x_threejs": 0,
-                "y": 0,
-                "y_threejs": 0,
-                "z": 70,
-                "z_threejs": 0,
-                "scale_x": 0,
-                "scale_y": 0,
-                "scale_z": 0,
-                "rotation_x": 0,
-                "rotation_y": 0,
-                "rotation_z": 0
-              },
-              "mobility_mashname": "uchastok",
-              "threejs_type": "3d",
-              "model": {
-                "title": "stela_test_2",
-                "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                "id": "stela_test_2",
-                "type": "stela",
-                "mobility_mashname": "uchastok",
-                "threejs_type": "3d",
-                "constant_materials": [
-                  {
-                    "material": {
-                      "title": "Дымовский",
-                      "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                      "id": "dymovsky",
-                      "type": "material"
-                    },
-                    "mashname": "constant_material_mashname1"
-                  },
-                  {
-                    "material": {
-                      "title": "Дымовский",
-                      "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                      "id": "dymovsky",
-                      "type": "material"
-                    },
-                    "mashname": "constant_material_mashname2"
-                  },
-                  {
-                    "material": {
-                      "title": "Без материала",
-                      "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
-                      "id": "transparent",
-                      "type": "material"
-                    },
-                    "mashname": "front"
-                  }
-                ],
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
-                "default_position": {
-                  "x": 0,
-                  "x_threejs": 0,
-                  "y": 0,
-                  "y_threejs": 0,
-                  "z": 0,
-                  "z_threejs": 0,
-                  "scale_x": 0,
-                  "scale_y": 0,
-                  "scale_z": 0,
-                  "rotation_x": 0,
-                  "rotation_y": 0,
-                  "rotation_z": 0
-                },
-                "tag": "vertical, krest",
-                "SOtype": "model",
-                "parts": [],
-                "portraits": [
-                  {
-                    "role": "portrait",
-                    "localid": "portrait_1",
-                    "title": "Портрет",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Портрет теневой стандартный",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
-                      "id": "portrait_1",
-                      "type": "portrait",
-                      "position": {},
-                      "tag": "portrait"
-                    },
-                    "portraitcolour": "черно-белый теневой портрет",
-                    "size": "А4",
-                    "mobility_mashname": "front",
-                    "threejs_type": "2dtexture",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": true,
-                    "adding_title": "Добавить портрет",
-                    "adding_unique": false
-                  },
-                  {
-                    "role": "portrait",
-                    "localid": "portrait_3",
-                    "title": "Портрет",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Портрет теневой стандартный",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
-                      "id": "portrait_1",
-                      "type": "portrait",
-                      "position": {},
-                      "tag": "portrait"
-                    },
-                    "fotokeramikacolour": "красный",
-                    "fotokeramikaproducer": "russia",
-                    "size": "А4",
-                    "mobility_mashname": "front",
-                    "threejs_type": "2dtexture",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": true,
-                    "adding_title": "Добавить портрет",
-                    "adding_unique": false
-                  },
-                  {
-                    "role": "portrait",
-                    "localid": "portrait_1",
-                    "title": "Добавить портрет",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Нажмите для того чтобы выбрать \"Портрет\"",
-                      "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                      "id": "empty_portrait",
-                      "type": "portrait",
-                      "position": {},
-                      "SOtype": "model"
-                    },
-                    "portraitcolour": "черно-белый теневой портрет",
-                    "size": "А4",
-                    "mobility_mashname": "front",
-                    "threejs_type": "2dtexture",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": false,
-                    "adding_title": "",
-                    "adding_unique": true,
-                    "adding_added": true,
-                    "adding_titlewhenfilled": "Портрет"
-                  },
-                  {
-                    "role": "portrait",
-                    "localid": "portrait_3",
-                    "title": "Добавить портрет",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Нажмите для того чтобы выбрать \"Портрет\"",
-                      "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                      "id": "empty_portrait",
-                      "type": "portrait",
-                      "position": {},
-                      "SOtype": "model"
-                    },
-                    "fotokeramikacolour": "красный",
-                    "fotokeramikaproducer": "russia",
-                    "size": "А4",
-                    "mobility_mashname": "front",
-                    "threejs_type": "2dtexture",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": false,
-                    "adding_title": "",
-                    "adding_unique": true,
-                    "adding_added": true,
-                    "adding_titlewhenfilled": "Портрет"
-                  }
-                ],
-                "texts": [
-                  {
-                    "role": "nadpis",
-                    "localid": "FIO_1",
-                    "title": "ФИО",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Академия",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "arial",
-                      "id": "nadpis_akademiya",
-                      "type": "nadpis",
-                      "position": {},
-                      "tag": "nadpis"
-                    },
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "glubina": "obychniy",
-                    "value": "Иванов Иван Иванович",
-                    "mobility_mashname": "front",
-                    "threejs_type": "text",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": true,
-                    "adding_title": "add FIO",
-                    "adding_unique": false
-                  },
-                  {
-                    "role": "nadpis",
-                    "localid": "Gody_1",
-                    "title": "Годы",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Академия",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "arial",
-                      "id": "nadpis_akademiya",
-                      "type": "nadpis",
-                      "position": {},
-                      "tag": "nadpis"
-                    },
-                    "material": "susalnoe_zoloto",
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "glubina": "obychniy",
-                    "value": "01.01.1900-01.01.01.2999",
-                    "mobility_mashname": "front",
-                    "threejs_type": "text",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": true,
-                    "adding_title": "Добавить daty",
-                    "adding_unique": false
-                  },
-                  {
-                    "role": "nadpis",
-                    "localid": "FIO_2",
-                    "title": "ФИО 2",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Академия",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "arial",
-                      "id": "nadpis_akademiya",
-                      "type": "nadpis",
-                      "position": {},
-                      "tag": "nadpis"
-                    },
-                    "material": "susalnoe_zoloto",
-                    "glubina": "obychniy",
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "value": "Иванов Иван Иванович",
-                    "mobility_mashname": "front",
-                    "threejs_type": "text",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    }
-                  },
-                  {
-                    "role": "nadpis",
-                    "localid": "Gody_2",
-                    "title": "Годы 2",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Академия",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "arial",
-                      "id": "nadpis_akademiya",
-                      "type": "nadpis",
-                      "position": {},
-                      "tag": "nadpis"
-                    },
-                    "material": "susalnoe_zoloto",
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "glubina": "obychniy",
-                    "value": "01.01.1900-01.01.01.2999",
-                    "mobility_mashname": "front",
-                    "threejs_type": "text",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    }
-                  },
-                  {
-                    "role": "nadpis",
-                    "localid": "FIO_1",
-                    "title": "add FIO",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Нажмите для того чтобы выбрать \"Надпись\"",
-                      "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                      "id": "empty_nadpis",
-                      "type": "nadpis",
-                      "position": {},
-                      "SOtype": "model"
-                    },
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "glubina": "obychniy",
-                    "value": "Иванов Иван Иванович",
-                    "mobility_mashname": "front",
-                    "threejs_type": "text",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": false,
-                    "adding_title": "",
-                    "adding_unique": true,
-                    "adding_added": true,
-                    "adding_titlewhenfilled": "ФИО"
-                  },
-                  {
-                    "role": "nadpis",
-                    "localid": "Gody_1",
-                    "title": "Добавить daty",
-                    "SOtype": "model",
-                    "model": {
-                      "title": "Нажмите для того чтобы выбрать \"Надпись\"",
-                      "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                      "id": "empty_nadpis",
-                      "type": "nadpis",
-                      "position": {},
-                      "SOtype": "model"
-                    },
-                    "material": "susalnoe_zoloto",
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "glubina": "obychniy",
-                    "value": "01.01.1900-01.01.01.2999",
-                    "mobility_mashname": "front",
-                    "threejs_type": "text",
-                    "position": {
-                      "x": 0,
-                      "x_threejs": 0,
-                      "y": 0,
-                      "y_threejs": 0,
-                      "z": 0,
-                      "z_threejs": 0,
-                      "scale_x": 0,
-                      "scale_y": 0,
-                      "scale_z": 0,
-                      "rotation_x": 0,
-                      "rotation_y": 0,
-                      "rotation_z": 0
-                    },
-                    "adding_allow": false,
-                    "adding_title": "",
-                    "adding_unique": true,
-                    "adding_added": true,
-                    "adding_titlewhenfilled": "Годы"
-                  }
-                ],
-                "portraits_groupactions": [
-                  {
-                    "name": "portraits_groupactions",
-                    "title": "Изменить для всех портретов стелы",
-                    "model": {
-                      "title": "Портрет теневой стандартный",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
-                      "id": "portrait_1",
-                      "type": "portrait",
-                      "position": {},
-                      "tag": "portrait"
-                    },
-                    "fotokeramikacolour": "красный",
-                    "fotokeramikaproducer": "russia",
-                    "size": "А4",
-                    "portraitcolour": "черно-белый теневой портрет",
-                    "localid": "main"
-                  }
-                ],
-                "texts_groupactions": [
-                  {
-                    "name": "texts_groupactions",
-                    "title": "Изменить для всех надписей стелы",
-                    "model": {
-                      "title": "Академия",
-                      "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                      "src_threejs": "arial",
-                      "id": "nadpis_akademiya",
-                      "type": "nadpis",
-                      "position": {},
-                      "tag": "nadpis"
-                    },
-                    "nadpis_nanesenie": "peskostruynaya",
-                    "nadpis_pokrytye": "",
-                    "glubina": "obychniy",
-                    "localid": "main"
-                  }
-                ],
-                "groupactions": []
-              },
-              "title": "стела",
-              "size": "100*50*5",
-              "role": "stela sleva",
-              "localid": "parts_0",
-              "portraits_groupactions": [
-                {
-                  "name": "portraits_groupactions",
-                  "title": "Изменить для всех портретов стелы",
-                  "model": {
-                    "title": "Портрет теневой стандартный",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
-                    "id": "portrait_1",
-                    "type": "portrait",
-                    "position": {},
-                    "tag": "portrait"
-                  },
-                  "size": "А4",
-                  "fotokeramikacolour": "красный",
-                  "fotokeramikaproducer": "russia",
-                  "portraitcolour": "черно-белый теневой портрет",
-                  "hidden": false,
-                  "open": false,
-                  "active": true,
-                  "id": "treeroot_1_0_0_portraits_groupactions_0_"
-                }
-              ],
-              "texts_groupactions": [
-                {
-                  "name": "texts_groupactions",
-                  "title": "Изменить для всех надписей стелы",
-                  "model": {
-                    "title": "Академия",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "arial",
-                    "id": "nadpis_akademiya",
-                    "type": "nadpis",
-                    "position": {},
-                    "tag": "nadpis"
-                  },
-                  "nadpis_nanesenie": "peskostruynaya",
-                  "nadpis_pokrytye": "",
-                  "glubina": "obychniy",
-                  "hidden": false,
-                  "open": false,
-                  "active": true,
-                  "id": "treeroot_1_0_0_texts_groupactions_0_"
-                }
-              ],
-              "material": {
-                "title": "Габбро-Диабаз",
-                "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
-                "id": "diabaz",
-                "type": "material"
-              },
-              "parts": [],
-              "portraits": [
-                {
-                  "id": "treeroot_1_0_0_portraits_0_",
-                  "model": {
-                    "title": "Портрет теневой стандартный",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
-                    "id": "portrait_1",
-                    "type": "portrait",
-                    "position": {},
-                    "tag": "portrait"
-                  },
-                  "title": "Портрет",
-                  "size": "А4",
-                  "localid": "portrait_1",
-                  "role": "portrait",
-                  "portraitcolour": "черно-белый теневой портрет",
-                  "adding_allow": true,
-                  "adding_title": "Добавить портрет",
-                  "adding_unique": false,
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "threejs_type": "2dtexture",
-                  "mobility_mashname": "front"
-                },
-                {
-                  "id": "treeroot_1_0_0_portraits_1_",
-                  "model": {
-                    "title": "Портрет теневой стандартный",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
-                    "id": "portrait_1",
-                    "type": "portrait",
-                    "position": {},
-                    "tag": "portrait"
-                  },
-                  "title": "Портрет",
-                  "size": "А4",
-                  "localid": "portrait_3",
-                  "role": "portrait",
-                  "fotokeramikacolour": "красный",
-                  "fotokeramikaproducer": "russia",
-                  "adding_allow": true,
-                  "adding_title": "Добавить портрет",
-                  "adding_unique": false,
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "threejs_type": "2dtexture",
-                  "mobility_mashname": "front"
-                },
-                {
-                  "id": "treeroot_1_0_0_portraits_2_",
-                  "model": {
-                    "title": "Нажмите для того чтобы выбрать \"Портрет\"",
-                    "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "id": "empty_portrait",
-                    "type": "portrait",
-                    "position": {},
-                    "SOtype": "model"
-                  },
-                  "title": "Добавить портрет",
-                  "size": "А4",
-                  "localid": "portrait_1",
-                  "role": "portrait",
-                  "portraitcolour": "черно-белый теневой портрет",
-                  "adding_added": true,
-                  "adding_allow": false,
-                  "adding_title": "",
-                  "adding_unique": true,
-                  "adding_titlewhenfilled": "Портрет",
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "threejs_type": "2dtexture",
-                  "mobility_mashname": "front"
-                },
-                {
-                  "id": "treeroot_1_0_0_portraits_3_",
-                  "model": {
-                    "title": "Нажмите для того чтобы выбрать \"Портрет\"",
-                    "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "id": "empty_portrait",
-                    "type": "portrait",
-                    "position": {},
-                    "SOtype": "model"
-                  },
-                  "title": "Добавить портрет",
-                  "size": "А4",
-                  "localid": "portrait_3",
-                  "role": "portrait",
-                  "fotokeramikacolour": "красный",
-                  "fotokeramikaproducer": "russia",
-                  "adding_added": true,
-                  "adding_allow": false,
-                  "adding_title": "",
-                  "adding_unique": true,
-                  "adding_titlewhenfilled": "Портрет",
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "threejs_type": "2dtexture",
-                  "mobility_mashname": "front"
-                }
-              ],
-              "texts": [
-                {
-                  "id": "treeroot_1_0_0_texts_0_",
-                  "model": {
-                    "title": "Академия",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "arial",
-                    "id": "nadpis_akademiya",
-                    "type": "nadpis",
-                    "position": {},
-                    "tag": "nadpis"
-                  },
-                  "title": "ФИО",
-                  "value": "Иванов Иван Иванович",
-                  "localid": "FIO_1",
-                  "role": "nadpis",
-                  "adding_allow": true,
-                  "adding_title": "add FIO",
-                  "adding_unique": false,
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "mobility_mashname": "front",
-                  "threejs_type": "text"
-                },
-                {
-                  "id": "treeroot_1_0_0_texts_1_",
-                  "model": {
-                    "title": "Академия",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "arial",
-                    "id": "nadpis_akademiya",
-                    "type": "nadpis",
-                    "position": {},
-                    "tag": "nadpis"
-                  },
-                  "material": "susalnoe_zoloto",
-                  "title": "Годы",
-                  "value": "01.01.1900-01.01.01.2999",
-                  "localid": "Gody_1",
-                  "role": "nadpis",
-                  "adding_allow": true,
-                  "adding_title": "Добавить daty",
-                  "adding_unique": false,
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "mobility_mashname": "front",
-                  "threejs_type": "text"
-                },
-                {
-                  "id": "treeroot_1_0_0_texts_2_",
-                  "model": {
-                    "title": "Академия",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "arial",
-                    "id": "nadpis_akademiya",
-                    "type": "nadpis",
-                    "position": {},
-                    "tag": "nadpis"
-                  },
-                  "material": "susalnoe_zoloto",
-                  "title": "ФИО 2",
-                  "value": "Иванов Иван Иванович",
-                  "localid": "FIO_2",
-                  "role": "nadpis",
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "mobility_mashname": "front",
-                  "threejs_type": "text"
-                },
-                {
-                  "id": "treeroot_1_0_0_texts_3_",
-                  "model": {
-                    "title": "Академия",
-                    "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                    "src_threejs": "arial",
-                    "id": "nadpis_akademiya",
-                    "type": "nadpis",
-                    "position": {},
-                    "tag": "nadpis"
-                  },
-                  "material": "susalnoe_zoloto",
-                  "title": "Годы 2",
-                  "value": "01.01.1900-01.01.01.2999",
-                  "localid": "Gody_2",
-                  "role": "nadpis",
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "mobility_mashname": "front",
-                  "threejs_type": "text"
-                },
-                {
-                  "id": "treeroot_1_0_0_texts_4_",
-                  "model": {
-                    "title": "Нажмите для того чтобы выбрать \"Надпись\"",
-                    "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "id": "empty_nadpis",
-                    "type": "nadpis",
-                    "position": {},
-                    "SOtype": "model"
-                  },
-                  "title": "add FIO",
-                  "value": "Иванов Иван Иванович",
-                  "localid": "FIO_1",
-                  "role": "nadpis",
-                  "adding_added": true,
-                  "adding_allow": false,
-                  "adding_title": "",
-                  "adding_unique": true,
-                  "adding_titlewhenfilled": "ФИО",
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "mobility_mashname": "front",
-                  "threejs_type": "text"
-                },
-                {
-                  "id": "treeroot_1_0_0_texts_5_",
-                  "model": {
-                    "title": "Нажмите для того чтобы выбрать \"Надпись\"",
-                    "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                    "id": "empty_nadpis",
-                    "type": "nadpis",
-                    "position": {},
-                    "SOtype": "model"
-                  },
-                  "material": "susalnoe_zoloto",
-                  "title": "Добавить daty",
-                  "value": "01.01.1900-01.01.01.2999",
-                  "localid": "Gody_1",
-                  "role": "nadpis",
-                  "adding_added": true,
-                  "adding_allow": false,
-                  "adding_title": "",
-                  "adding_unique": true,
-                  "adding_titlewhenfilled": "Годы",
-                  "position": {
-                    "x": 0,
-                    "x_threejs": 0,
-                    "y": 0,
-                    "y_threejs": 0,
-                    "z": 0,
-                    "z_threejs": 0,
-                    "scale_x": 0,
-                    "scale_y": 0,
-                    "scale_z": 0,
-                    "rotation_x": 0,
-                    "rotation_y": 0,
-                    "rotation_z": 0
-                  },
-                  "mobility_mashname": "front",
-                  "threejs_type": "text"
-                }
-              ]
-            },
             {
               "id": "treeroot_1_0_1_",
               "hidden": false,
@@ -6939,7 +6823,7 @@
                     "material": {
                       "title": "Дымовский",
                       "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                      "src_threejs": "../assets/images/1.jpg",
                       "id": "dymovsky",
                       "type": "material"
                     },
@@ -6949,7 +6833,7 @@
                     "material": {
                       "title": "Дымовский",
                       "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                      "src_threejs": "../assets/images/1.jpg",
                       "id": "dymovsky",
                       "type": "material"
                     },
@@ -6959,14 +6843,14 @@
                     "material": {
                       "title": "Без материала",
                       "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                      "src_threejs": "../assets/images/transparent.png",
                       "id": "transparent",
                       "type": "material"
                     },
                     "mashname": "front"
                   }
                 ],
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                "src_threejs": "../assets/images/23.obj",
                 "default_position": {
                   "x": 0,
                   "x_threejs": 0,
@@ -7224,7 +7108,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -7462,7 +7346,7 @@
                     "material": {
                       "title": "Дымовский",
                       "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                      "src_threejs": "../assets/images/1.jpg",
                       "id": "dymovsky",
                       "type": "material"
                     },
@@ -7472,7 +7356,7 @@
                     "material": {
                       "title": "Дымовский",
                       "src": "https://204815.selcdn.ru/40/materialy/granit_dimovskiy.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                      "src_threejs": "../assets/images/1.jpg",
                       "id": "dymovsky",
                       "type": "material"
                     },
@@ -7482,14 +7366,14 @@
                     "material": {
                       "title": "Без материала",
                       "src": "https://204815.selcdn.ru/40/materialy/mramor_zmeevik.jpg",
-                      "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/transparent.png",
+                      "src_threejs": "../assets/images/transparent.png",
                       "id": "transparent",
                       "type": "material"
                     },
                     "mashname": "front"
                   }
                 ],
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/objs/23.obj",
+                "src_threejs": "../assets/images/23.obj",
                 "default_position": {
                   "x": 0,
                   "x_threejs": 0,
@@ -7980,7 +7864,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8399,7 +8283,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8415,7 +8299,7 @@
           "material": {
             "title": "Габбро-Диабаз",
             "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+            "src_threejs": "../assets/images/1.jpg",
             "id": "diabaz",
             "type": "material"
           },
@@ -8442,7 +8326,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8502,7 +8386,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8526,7 +8410,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8553,7 +8437,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8580,7 +8464,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8607,7 +8491,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8634,7 +8518,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8658,7 +8542,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8684,7 +8568,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8710,7 +8594,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8736,7 +8620,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8762,7 +8646,7 @@
                 "material": {
                   "title": "Габбро-Диабаз",
                   "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                  "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                  "src_threejs": "../assets/images/1.jpg",
                   "id": "diabaz",
                   "type": "material"
                 },
@@ -8783,7 +8667,7 @@
           "material": {
             "title": "Габбро-Диабаз",
             "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-            "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+            "src_threejs": "../assets/images/1.jpg",
             "id": "diabaz",
             "type": "material"
           },
@@ -8810,7 +8694,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8843,7 +8727,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8876,7 +8760,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8909,7 +8793,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8942,7 +8826,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -8975,7 +8859,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -9007,7 +8891,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -9037,7 +8921,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -9067,7 +8951,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -9097,7 +8981,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
@@ -9127,7 +9011,7 @@
               "material": {
                 "title": "Габбро-Диабаз",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/materials/1.jpg",
+                "src_threejs": "../assets/images/1.jpg",
                 "id": "diabaz",
                 "type": "material"
               },
