@@ -1018,7 +1018,7 @@
                   "id": "transparent",
                   "type": "material"
                 },
-                "mashname": "front"
+                "mashname": "TextBox"
               }
             ],
             "src_threejs": "../assets/images/23.obj",
@@ -1743,7 +1743,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "front",
+              "mobility_mashname": "TextBox",
               "threejs_type": "text"
             },
             {
@@ -1972,7 +1972,7 @@
               "y": 0,
               "y_threejs": 0,
               "z": -50,
-              "z_threejs": 100,
+              "z_threejs": 200,
               "scale_x": 0,
               "scale_y": 0,
               "scale_z": 0,

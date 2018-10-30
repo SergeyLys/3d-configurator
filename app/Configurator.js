@@ -35,11 +35,11 @@ import DragdropControls from "./DragdropControls";
 import TWEEN from "@tweenjs/tween.js";
 import {fabric} from "fabric";
 
-// TODO: 1. Парсинг схемы и загрузка мешей 5ч. DONE
-// TODO: 2. Наложение портретов из схемы 3ч.
-// TODO: 3. Наложение текстов из схемы 2ч.
-// TODO: 4. Уменьшение асинхронных запросов на одинаковые файлы 4ч. DONE
-// TODO: 5. Драгдроп целого объекта из схемы 4ч. DONE
+// TODO: 1. Парсинг схемы и загрузка мешей, 5ч. DONE
+// TODO: 2. Наложение портретов из схемы, 3ч.
+// TODO: 3. Наложение текстов из схемы, 2ч.
+// TODO: 4. Уменьшение асинхронных запросов на одинаковые файлы, 4ч. DONE
+// TODO: 5. Драгдроп целого объекта из схемы, 4ч. DONE
 
 export default class Configurator {
     constructor(data) {
@@ -202,7 +202,7 @@ export default class Configurator {
         const v0 = this.ground.geometry.boundingBox.min;
         const v1 = this.ground.geometry.boundingBox.max;
 
-        this.world.add(this.ground);
+        // this.world.add(this.ground);
 
 
         this.objLoader.load('../assets/images/Grass.obj', (geometry) => {
@@ -399,16 +399,17 @@ export default class Configurator {
             part.model.default_position.rotation_y,
             part.model.default_position.rotation_z,
         );
+        this.sceneGroups[part.parent_id] = new Object3D();
 
         part.model.constant_materials.forEach((mat) => {
-            this.textureLoader.load(mat.material.src_threejs, function ( texture ) {
-                texture.wrapS = texture.wrapT = RepeatWrapping;
-                Object.assign(constantsMaterials, {
-                    [mat.meshname]: texture
-                });
+            const constantTexture = this.textureLoader.load(mat.material.src_threejs, ( tex ) => {
+                tex.wrapS = tex.wrapT = RepeatWrapping;
+            });
+            Object.assign(constantsMaterials, {
+                [mat.mashname]: constantTexture
             });
         });
-        this.sceneGroups[part.parent_id] = new Object3D();
+
         this.objLoader.load(part.model.src_threejs, (object) => {
             object.traverse((mesh) => {
                 if (mesh instanceof Mesh) {
@@ -416,6 +417,7 @@ export default class Configurator {
                         mesh.material = new MeshPhongMaterial({
                             map: constantsMaterials[mesh.name],
                             transparent: true,
+                            // color: "#ff0000"
                         });
                     } else {
                         mesh.material = new MeshPhongMaterial({
@@ -445,14 +447,24 @@ export default class Configurator {
             });
 
             if (part.texts.length) {
-                const canvas2dGroup = this.configurator2d.addGroup(part.parent_id);
+                const canvasForImage = this.configurator2d.addGroup(part.parent_id);
+
                 part.texts.forEach((textItem) => {
+                    const meshForTexture = group.getObjectByName(textItem.mobility_mashname);
+                    if (meshForTexture) {
+                        const {width, height, left, top} = calculateCanvasFramePosition(
+                            meshForTexture, this.camera.object, this.width, this.height
+                        );
+                        const textureCanvas = this.configurator2d.createCanvasForTexture(meshForTexture, width, height, left, top);
+                        console.log(this.configurator2d.canvases);
+                    }
+
                     // canvas2dGroup.push()
                 });
             }
 
             this.sceneGroups[part.parent_id].add(group);
-            
+
             this.world.add(this.sceneGroups[part.parent_id]);
         });
     }
