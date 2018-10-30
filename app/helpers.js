@@ -91,3 +91,9 @@ export function calculateCanvasFramePosition(currentMesh, camera, width, height)
         top: pos.y - (height * fractionHeight) / 2
     }
 }
+
+export function filterUniqueItems(initialArray, value) {
+    return initialArray.filter((text, index, arr) =>
+        arr.map(mapObj => mapObj[value]).indexOf(text[value]) === index
+    );
+}

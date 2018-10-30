@@ -27,19 +27,20 @@ import {
     randNum,
     randomPointInDiapason,
     getCenterPoint,
-    calculateCanvasFramePosition
+    calculateCanvasFramePosition,
+    filterUniqueItems
 } from "./helpers";
 import Configurator2d from "./Configurator2d";
 import OrbitControls from "./libs/OrbitControls";
 import DragdropControls from "./DragdropControls";
 import TWEEN from "@tweenjs/tween.js";
-import {fabric} from "fabric";
 
 // TODO: 1. Парсинг схемы и загрузка мешей 5ч. DONE
-// TODO: 2. Наложение портретов из схемы 3ч.
-// TODO: 3. Наложение текстов из схемы 2ч.
+// TODO: 2. Наложение портретов из схемы 4ч. DONE
+// TODO: 3. Наложение текстов из схемы 8ч. DONE
 // TODO: 4. Уменьшение асинхронных запросов на одинаковые файлы 4ч. DONE
 // TODO: 5. Драгдроп целого объекта из схемы 4ч. DONE
+// TODO: 6. Редактирование портретов и текстов
 
 export default class Configurator {
     constructor(data) {
@@ -442,42 +443,60 @@ export default class Configurator {
                 dragable: true
             });
 
-            if (part.texts.length) {
-                const objectGroupForCanvases = this.configurator2d.canvases[part.parent_id] = {};
-                const filteredTexts = part.texts.filter((text, index, arr) =>
-                    arr.map(mapObj => mapObj.mobility_mashname).indexOf(text.mobility_mashname) === index
-                );
-
-                filteredTexts.forEach((textItem) => {
-                    const meshForTexture = group.getObjectByName(textItem.mobility_mashname);
-                    if (meshForTexture) {
-                        const {width, height} = calculateCanvasFramePosition(
-                            meshForTexture, this.camera.object, this.width, this.height
-                        );
-                        const text = this.configurator2d.createTextInstance(textItem.value, {
-                            x: textItem.position.x_threejs,
-                            y: textItem.position.y_threejs,
-                        });
-                        console.log(width, height);
-                        const canvasesSubGroup = objectGroupForCanvases[part.id] = {};
-                        // objectGroupForCanvases
-                        canvasesSubGroup[textItem.mobility_mashname] = this.configurator2d.createCanvasForTexture(width, height);
-                        canvasesSubGroup[textItem.mobility_mashname].add(text);
-                    }
-                });
-                
-
-                // part.texts.forEach((textItem) => {
-                //     const meshForTexture = group.getObjectByName(textItem.mobility_mashname);
-
-                //
-                //     // canvas2dGroup.push()
-                // });
-            }
+            this.applySurfaceAttribute(group, part);
 
             this.sceneGroups[part.parent_id].add(group);
-
             this.world.add(this.sceneGroups[part.parent_id]);
+        });
+    }
+
+    applySurfaceAttribute(group, part) {
+        const objectGroupForCanvases = this.configurator2d.canvases[part.parent_id]
+            ? this.configurator2d.canvases[part.parent_id]
+            : this.configurator2d.canvases[part.parent_id] = {};
+        const filteredTexts = filterUniqueItems(part.texts, 'mobility_mashname');
+        const filteredPortraits = filterUniqueItems(part.portraits, 'mobility_mashname');
+        const attributesArray = [...filteredTexts, ...filteredPortraits];
+
+        attributesArray.forEach((attribute) => {
+            const meshForTexture = group.getObjectByName(attribute.mobility_mashname);
+            if (meshForTexture) {
+                const {width, height} = part.model.constant_sizes.find((sizeItem) =>
+                    sizeItem.meshName === attribute.mobility_mashname
+                );
+                const canvasesSubGroup = objectGroupForCanvases[part.id]
+                    ? objectGroupForCanvases[part.id]
+                    : objectGroupForCanvases[part.id] = {};
+                const fabricCanvas = canvasesSubGroup[attribute.mobility_mashname]
+                    ? canvasesSubGroup[attribute.mobility_mashname]
+                    : canvasesSubGroup[attribute.mobility_mashname] = this.configurator2d.createCanvasForTexture(width, height);
+
+                part.texts.forEach((tI) => {
+                    if (tI.mobility_mashname === meshForTexture.name) {
+                        const text = this.configurator2d.createTextInstance(tI.value, {
+                            x: tI.position.x_threejs,
+                            y: tI.position.y_threejs,
+                        });
+                        fabricCanvas.add(text);
+                        fabricCanvas.renderAll();
+                    }
+                });
+
+                part.portraits.forEach((pI) => {
+                    if (pI.mobility_mashname === meshForTexture.name) {
+                        this.configurator2d.getImageFromURL(pI.model.src_threejs, {
+                            x: pI.position.x_threejs,
+                            y: pI.position.y_threejs,
+                        }).then((portrait) => {
+                            fabricCanvas.add(portrait);
+                            fabricCanvas.renderAll();
+                            meshForTexture.material.map = new CanvasTexture(fabricCanvas.contextContainer.canvas);
+                        });
+                    }
+                });
+
+                meshForTexture.material.map = new CanvasTexture(fabricCanvas.contextContainer.canvas);
+            }
         });
     }
 

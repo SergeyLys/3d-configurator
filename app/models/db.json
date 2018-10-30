@@ -1573,7 +1573,7 @@
               "model": {
                 "title": "Портрет теневой стандартный",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                "src_threejs": "../assets/images/portrait.png",
                 "id": "portrait_1",
                 "type": "portrait",
                 "position": {},
@@ -1591,7 +1591,7 @@
                 "x": 0,
                 "x_threejs": 0,
                 "y": 0,
-                "y_threejs": 0,
+                "y_threejs": 200,
                 "z": 0,
                 "z_threejs": 0,
                 "scale_x": 0,
@@ -1602,7 +1602,7 @@
                 "rotation_z": 0
               },
               "threejs_type": "2dtexture",
-              "mobility_mashname": "front"
+              "mobility_mashname": "TextBox"
             },
             {
               "id": "treeroot_0_0_portraits_1_",
@@ -1730,7 +1730,7 @@
                 "tag": "nadpis"
               },
               "title": "ФИО",
-              "value": "Иванов Иван Иванович",
+              "value": "Иванов Иван Иванович 1",
               "localid": "FIO_1",
               "role": "nadpis",
               "adding_allow": true,
@@ -1776,7 +1776,7 @@
                 "x": 0,
                 "x_threejs": 0,
                 "y": 0,
-                "y_threejs": 0,
+                "y_threejs": 50,
                 "z": 0,
                 "z_threejs": 0,
                 "scale_x": 0,
@@ -1802,14 +1802,14 @@
               },
               "material": "susalnoe_zoloto",
               "title": "ФИО 2",
-              "value": "Иванов Иван Иванович",
+              "value": "Иванов Иван Иванович 2",
               "localid": "FIO_2",
               "role": "nadpis",
               "position": {
                 "x": 0,
                 "x_threejs": 0,
                 "y": 0,
-                "y_threejs": 0,
+                "y_threejs": 100,
                 "z": 0,
                 "z_threejs": 0,
                 "scale_x": 0,
@@ -1960,6 +1960,14 @@
             "position": {},
             "mobility_mashname": "uchastok",
             "threejs_type": "3d",
+            "src_threejs": "../assets/images/23.obj",
+            "constant_sizes": [
+              {
+                "meshName": "TextBox",
+                "width": "400",
+                "height": "1100"
+              }
+            ],
             "constant_materials": [
               {
                 "material": {
@@ -1972,14 +1980,13 @@
                 "mashname": "TextBox"
               }
             ],
-            "src_threejs": "../assets/images/23.obj",
             "default_position": {
               "x": -50,
               "x_threejs": 0,
               "y": 0,
               "y_threejs": 0,
               "z": -50,
-              "z_threejs": 200,
+              "z_threejs": 400,
               "scale_x": 0,
               "scale_y": 0,
               "scale_z": 0,
@@ -2517,7 +2524,7 @@
               "model": {
                 "title": "Портрет теневой стандартный",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
-                "src_threejs": "http://194.87.161.4/api/v1/data/files/portraits/portrait.png",
+                "src_threejs": "../assets/images/portrait.png",
                 "id": "portrait_1",
                 "type": "portrait",
                 "position": {},
@@ -2535,7 +2542,7 @@
                 "x": 0,
                 "x_threejs": 0,
                 "y": 0,
-                "y_threejs": 0,
+                "y_threejs": 40,
                 "z": 0,
                 "z_threejs": 0,
                 "scale_x": 0,
@@ -2546,7 +2553,7 @@
                 "rotation_z": 0
               },
               "threejs_type": "2dtexture",
-              "mobility_mashname": "front"
+              "mobility_mashname": "TextBox"
             },
             {
               "id": "treeroot_0_0_portraits_1_",
@@ -2694,7 +2701,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "front",
+              "mobility_mashname": "TextBox",
               "threejs_type": "text"
             },
             {
@@ -2720,7 +2727,7 @@
                 "x": 0,
                 "x_threejs": 0,
                 "y": 0,
-                "y_threejs": 0,
+                "y_threejs": 20,
                 "z": 0,
                 "z_threejs": 0,
                 "scale_x": 0,
@@ -2730,7 +2737,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "front",
+              "mobility_mashname": "TextBox",
               "threejs_type": "text"
             },
             {
