@@ -9,7 +9,23 @@ export default class Configurator2d {
         return this.canvases[groupName];
     }
 
-    createCanvasForTexture(canvasName, width, height, left, top, textValue) {
+    createTextInstance(value, position) {
+        return new fabric.Textbox(value, {
+            name: 'TextBox',
+            fontSize: 20,
+            left: position.x,
+            top: position.y,
+            fontFamily: 'helvetica',
+            fontWeight: '',
+            originX: 'left',
+            fill: "#ffffff",
+            hasRotatingPoint: true,
+            centerTransform: true,
+            evented: true
+        });
+    }
+
+    createCanvasForTexture(width, height) {
         const canvas = document.createElement('canvas');
         const fabricCanvas = new fabric.Canvas(canvas, { width, height });
         const pixelsPerMM = fabricCanvas.width / 400;

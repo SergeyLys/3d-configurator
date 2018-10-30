@@ -447,7 +447,7 @@ export default class Configurator {
             });
 
             if (part.texts.length) {
-                const canvasForImage = this.configurator2d.addGroup(part.parent_id);
+                const objectGroupForCanvases = this.configurator2d.addGroup(part.parent_id);
 
                 part.texts.forEach((textItem) => {
                     const meshForTexture = group.getObjectByName(textItem.mobility_mashname);
@@ -455,8 +455,12 @@ export default class Configurator {
                         const {width, height, left, top} = calculateCanvasFramePosition(
                             meshForTexture, this.camera.object, this.width, this.height
                         );
-                        const textureCanvas = this.configurator2d.createCanvasForTexture(meshForTexture, width, height, left, top);
-                        console.log(this.configurator2d.canvases);
+                        const text = this.configurator2d.createTextInstance(textItem.value, {
+                            x: textItem.position.x_threejs,
+                            y: textItem.position.y_threejs,
+                        });
+                        objectGroupForCanvases[part.id] = this.configurator2d.createCanvasForTexture(meshForTexture, width, height, left, top);
+                        objectGroupForCanvases[part.id].add(textBox);
                     }
 
                     // canvas2dGroup.push()
