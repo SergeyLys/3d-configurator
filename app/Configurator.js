@@ -35,11 +35,11 @@ import DragdropControls from "./DragdropControls";
 import TWEEN from "@tweenjs/tween.js";
 import {fabric} from "fabric";
 
-// TODO: 1. Парсинг схемы и загрузка мешей, 5ч. DONE
-// TODO: 2. Наложение портретов из схемы, 3ч.
-// TODO: 3. Наложение текстов из схемы, 2ч.
-// TODO: 4. Уменьшение асинхронных запросов на одинаковые файлы, 4ч. DONE
-// TODO: 5. Драгдроп целого объекта из схемы, 4ч. DONE
+// TODO: 1. Парсинг схемы и загрузка мешей 5ч. DONE
+// TODO: 2. Наложение портретов из схемы 3ч.
+// TODO: 3. Наложение текстов из схемы 2ч.
+// TODO: 4. Уменьшение асинхронных запросов на одинаковые файлы 4ч. DONE
+// TODO: 5. Драгдроп целого объекта из схемы 4ч. DONE
 
 export default class Configurator {
     constructor(data) {
@@ -131,10 +131,8 @@ export default class Configurator {
         this._setCameraOptions();
         this._addBasePlane().then(() => {
             const objLinks = parseData(this.data);
-            console.log(objLinks);
-            // const linksForLoad = objLinks.filter((link, index, arr) =>
-            //     arr.map(mapObj => mapObj.model.src_threejs).indexOf(link.model.src_threejs) === index
-            // ).map((part) => part.model.src_threejs);
+            // console.log(objLinks);
+
             // const linksForLoad = objLinks.map((part) => part.model.src_threejs);
             // const loadNextFile = () => {
             //     if (index > linksForLoad.length - 1) return false;
@@ -409,7 +407,6 @@ export default class Configurator {
                 [mat.mashname]: constantTexture
             });
         });
-
         this.objLoader.load(part.model.src_threejs, (object) => {
             object.traverse((mesh) => {
                 if (mesh instanceof Mesh) {
@@ -417,7 +414,6 @@ export default class Configurator {
                         mesh.material = new MeshPhongMaterial({
                             map: constantsMaterials[mesh.name],
                             transparent: true,
-                            // color: "#ff0000"
                         });
                     } else {
                         mesh.material = new MeshPhongMaterial({
@@ -447,24 +443,36 @@ export default class Configurator {
             });
 
             if (part.texts.length) {
-                const objectGroupForCanvases = this.configurator2d.addGroup(part.parent_id);
+                const objectGroupForCanvases = this.configurator2d.canvases[part.parent_id] = {};
+                const filteredTexts = part.texts.filter((text, index, arr) =>
+                    arr.map(mapObj => mapObj.mobility_mashname).indexOf(text.mobility_mashname) === index
+                );
 
-                part.texts.forEach((textItem) => {
+                filteredTexts.forEach((textItem) => {
                     const meshForTexture = group.getObjectByName(textItem.mobility_mashname);
                     if (meshForTexture) {
-                        const {width, height, left, top} = calculateCanvasFramePosition(
+                        const {width, height} = calculateCanvasFramePosition(
                             meshForTexture, this.camera.object, this.width, this.height
                         );
                         const text = this.configurator2d.createTextInstance(textItem.value, {
                             x: textItem.position.x_threejs,
                             y: textItem.position.y_threejs,
                         });
-                        objectGroupForCanvases[part.id] = this.configurator2d.createCanvasForTexture(meshForTexture, width, height, left, top);
-                        objectGroupForCanvases[part.id].add(textBox);
+                        console.log(width, height);
+                        const canvasesSubGroup = objectGroupForCanvases[part.id] = {};
+                        // objectGroupForCanvases
+                        canvasesSubGroup[textItem.mobility_mashname] = this.configurator2d.createCanvasForTexture(width, height);
+                        canvasesSubGroup[textItem.mobility_mashname].add(text);
                     }
-
-                    // canvas2dGroup.push()
                 });
+                
+
+                // part.texts.forEach((textItem) => {
+                //     const meshForTexture = group.getObjectByName(textItem.mobility_mashname);
+
+                //
+                //     // canvas2dGroup.push()
+                // });
             }
 
             this.sceneGroups[part.parent_id].add(group);
@@ -473,7 +481,54 @@ export default class Configurator {
         });
     }
 
-
+    // _createCanvasForText(currentElement, width, height, left, top) {
+    //     const canvas = document.createElement('canvas');
+    //     const fabricCanvas = new fabric.Canvas(canvas, { width, height });
+    //     const pixelsPerMM = fabricCanvas.width / 400;
+    //     const mHeight = pixelsPerMM * 1100;
+    //     fabricCanvas.wrapperEl.style.left = `${left}px`;
+    //     fabricCanvas.wrapperEl.style.top = `${top}px`;
+    //     fabricCanvas.wrapperEl.style.position = 'absolute';
+    //     currentElement.material.isFilled = true;
+    //
+    //     // const checkbox = new fabric.Image()
+    //
+    //     const textBox = new fabric.Textbox("", {
+    //         name: 'TextBox',
+    //         fontSize: 20,
+    //         left: 0,
+    //         top: 0,
+    //         fontFamily: 'helvetica',
+    //         fontWeight: '',
+    //         originX: 'left',
+    //         fill: "#ffffff",
+    //         hasRotatingPoint: true,
+    //         centerTransform: true,
+    //         evented: true
+    //     });
+    //     fabricCanvas.getItemByName = function(name) {
+    //         return this.getObjects().filter(obj => obj.name === name)[0]
+    //     };
+    //     fabricCanvas.centerObject(textBox);
+    //     fabricCanvas.add(textBox);
+    //     fabricCanvas.setActiveObject(textBox);
+    //     textBox.enterEditing();
+    //     fabricCanvas.renderAll();
+    //
+    //     Object.assign(this.textBox, {
+    //         parentCanvas: canvas,
+    //         canvas: fabricCanvas,
+    //         projectionHeight: mHeight,
+    //         pixelsPerMM
+    //     });
+    //
+    //     document.body.appendChild(fabricCanvas.wrapperEl);
+    //
+    //     // fabricCanvas.upperCanvasEl.addEventListener('click', () => {
+    //     //     textBox.enterEditing();
+    //     // });
+    //     // currentElement.material.map = texture;
+    // }
 
     editFrontText() {
         this.camera.controls.minPolarAngle = 0;

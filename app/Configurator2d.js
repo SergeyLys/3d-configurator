@@ -4,10 +4,6 @@ export default class Configurator2d {
     constructor() {
         this.canvases = {};
     }
-    addGroup(groupName) {
-        this.canvases[groupName] = {};
-        return this.canvases[groupName];
-    }
 
     createTextInstance(value, position) {
         return new fabric.Textbox(value, {
@@ -35,6 +31,10 @@ export default class Configurator2d {
         // fabricCanvas.wrapperEl.style.position = 'absolute';
         // currentElement.material.isFilled = true;
 
+
+        fabricCanvas.getItemByName = function(name) {
+            return this.getObjects().filter(obj => obj.name === name)[0]
+        };
         // const checkbox = new fabric.Image()
 
         // const textBox = new fabric.Textbox(textValue, {

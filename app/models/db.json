@@ -1009,6 +1009,13 @@
             "position": {},
             "mobility_mashname": "uchastok",
             "threejs_type": "3d",
+            "constant_sizes": [
+              {
+                "meshName": "TextBox",
+                "width": "400",
+                "height": "1100"
+              }
+            ],
             "constant_materials": [
               {
                 "material": {
@@ -1779,7 +1786,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "front",
+              "mobility_mashname": "TextBox",
               "threejs_type": "text"
             },
             {
@@ -1812,7 +1819,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "front",
+              "mobility_mashname": "TextBox",
               "threejs_type": "text"
             },
             {
