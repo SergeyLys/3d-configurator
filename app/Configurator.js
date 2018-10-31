@@ -33,6 +33,7 @@ import {
 import Configurator2d from "./Configurator2d";
 import OrbitControls from "./libs/OrbitControls";
 import DragdropControls from "./DragdropControls";
+import UIController from "./UIController";
 import TWEEN from "@tweenjs/tween.js";
 
 // TODO: 1. Парсинг схемы и загрузка мешей 5ч. DONE
@@ -50,7 +51,7 @@ export default class Configurator {
         this.ground = null;
         this.targetForDragging = null;
         this.intersects = [];
-        this.groups = [];
+        this.editableMeshes = [];
         this.sceneGroups = {};
         this.dragItem = null;
         this.width = null;
@@ -227,7 +228,7 @@ export default class Configurator {
                 editable: false
             });
 
-            this.groups.push(group);
+            // this.groups.push(group);
             this.world.add(group);
 
             positionResolve();
@@ -265,6 +266,13 @@ export default class Configurator {
             return false;
         }
         const item = this.intersects[0];
+
+        if (this.editableMeshes.filter((mesh) => mesh === item.object).length) {
+            UIController.showButton('edit', () => {
+                console.log('button click');
+            });
+        }
+
         const itemsParent = item.object.parent;
         let objectHit;
 
@@ -479,6 +487,9 @@ export default class Configurator {
                         });
                         fabricCanvas.add(text);
                         fabricCanvas.renderAll();
+                        if (!this.editableMeshes.length || !this.editableMeshes.filter((mesh) => mesh === meshForTexture).length) {
+                            this.editableMeshes.push(meshForTexture);
+                        }
                     }
                 });
 
@@ -491,11 +502,16 @@ export default class Configurator {
                             fabricCanvas.add(portrait);
                             fabricCanvas.renderAll();
                             meshForTexture.material.map = new CanvasTexture(fabricCanvas.contextContainer.canvas);
+                            meshForTexture.material.isFilled = true;
+                            if (!this.editableMeshes.length || !this.editableMeshes.filter((mesh) => mesh === meshForTexture).length) {
+                                this.editableMeshes.push(meshForTexture);
+                            }
                         });
                     }
                 });
 
                 meshForTexture.material.map = new CanvasTexture(fabricCanvas.contextContainer.canvas);
+                meshForTexture.material.isFilled = true;
             }
         });
     }
@@ -549,7 +565,7 @@ export default class Configurator {
     //     // currentElement.material.map = texture;
     // }
 
-    editFrontText() {
+    editFrontText(mesh) {
         this.camera.controls.minPolarAngle = 0;
         this.camera.controls.maxPolarAngle = Infinity;
         this.camera.controls.enabled = false;
