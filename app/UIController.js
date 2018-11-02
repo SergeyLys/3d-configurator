@@ -30,6 +30,10 @@ export default new class UIController {
         }
     }
 
+    getButton(buttonType) {
+        return document.getElementById(buttonType);
+    }
+
     removeButton(buttonType) {
         if (document.getElementById(buttonType)) {
             document.getElementById(buttonType).remove();

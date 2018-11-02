@@ -1982,7 +1982,7 @@
             ],
             "default_position": {
               "x": -50,
-              "x_threejs": 0,
+              "x_threejs": 450,
               "y": 0,
               "y_threejs": 0,
               "z": -50,
@@ -2520,7 +2520,7 @@
           "parts": [],
           "portraits": [
             {
-              "id": "treeroot_0_0_portraits_0_",
+              "id": "treeroot_0_1_portraits_0_",
               "model": {
                 "title": "Портрет теневой стандартный",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
@@ -2556,7 +2556,7 @@
               "mobility_mashname": "TextBox"
             },
             {
-              "id": "treeroot_0_0_portraits_1_",
+              "id": "treeroot_0_1_portraits_1_",
               "model": {
                 "title": "Портрет теневой стандартный",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
@@ -2593,7 +2593,7 @@
               "mobility_mashname": "front"
             },
             {
-              "id": "treeroot_0_0_portraits_2_",
+              "id": "treeroot_0_1_portraits_2_",
               "model": {
                 "title": "Нажмите для того чтобы выбрать \"Портрет\"",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
@@ -2630,7 +2630,7 @@
               "mobility_mashname": "front"
             },
             {
-              "id": "treeroot_0_0_portraits_3_",
+              "id": "treeroot_0_1_portraits_3_",
               "model": {
                 "title": "Нажмите для того чтобы выбрать \"Портрет\"",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
@@ -2670,7 +2670,7 @@
           ],
           "texts": [
             {
-              "id": "treeroot_0_0_texts_0_",
+              "id": "treeroot_0_1_texts_0_",
               "model": {
                 "title": "Академия",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
@@ -2705,7 +2705,7 @@
               "threejs_type": "text"
             },
             {
-              "id": "treeroot_0_0_texts_1_",
+              "id": "treeroot_0_1_texts_1_",
               "model": {
                 "title": "Академия",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
@@ -2741,7 +2741,7 @@
               "threejs_type": "text"
             },
             {
-              "id": "treeroot_0_0_texts_2_",
+              "id": "treeroot_0_1_texts_2_",
               "model": {
                 "title": "Академия",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
@@ -2774,7 +2774,7 @@
               "threejs_type": "text"
             },
             {
-              "id": "treeroot_0_0_texts_3_",
+              "id": "treeroot_0_1_texts_3_",
               "model": {
                 "title": "Академия",
                 "src": "http://40dney.ru/files/2015/01/m001_01-220x180.jpg",
@@ -2807,7 +2807,7 @@
               "threejs_type": "text"
             },
             {
-              "id": "treeroot_0_0_texts_4_",
+              "id": "treeroot_0_1_texts_4_",
               "model": {
                 "title": "Нажмите для того чтобы выбрать \"Надпись\"",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",
@@ -2843,7 +2843,7 @@
               "threejs_type": "text"
             },
             {
-              "id": "treeroot_0_0_texts_5_",
+              "id": "treeroot_0_1_texts_5_",
               "model": {
                 "title": "Нажмите для того чтобы выбрать \"Надпись\"",
                 "src": "https://204815.selcdn.ru/40/materialy/granit_gabbro-diabaz.jpg",

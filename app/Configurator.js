@@ -37,11 +37,10 @@ import UIController from "./UIController";
 import TWEEN from "@tweenjs/tween.js";
 
 // TODO: 1. Парсинг схемы и загрузка мешей 5ч. DONE
-// TODO: 2. Наложение портретов из схемы 4ч. DONE
-// TODO: 3. Наложение текстов из схемы 8ч. DONE
-// TODO: 4. Уменьшение асинхронных запросов на одинаковые файлы 4ч. DONE
-// TODO: 5. Драгдроп целого объекта из схемы 4ч. DONE
-// TODO: 6. Редактирование портретов и текстов
+// TODO: 2. Наложение текстов и портретов из схемы 12ч. DONE
+// TODO: 3. Уменьшение асинхронных запросов на одинаковые файлы 4ч. DONE
+// TODO: 4. Драгдроп целого объекта из схемы 4ч. DONE
+// TODO: 5. Редактирование портретов и текстов 4ч. DONE
 
 export default class Configurator {
     constructor(data) {
@@ -133,18 +132,6 @@ export default class Configurator {
         this._setCameraOptions();
         this._addBasePlane().then(() => {
             const objLinks = parseData(this.data);
-            // console.log(objLinks);
-
-            // const linksForLoad = objLinks.map((part) => part.model.src_threejs);
-            // const loadNextFile = () => {
-            //     if (index > linksForLoad.length - 1) return false;
-            //     this.loadModel(linksForLoad[index]);
-            //     index++;
-            //     loadNextFile();
-            // };
-            //
-            // loadNextFile();
-
             objLinks.forEach((part) => {
                 this.loadModel(part);
             });
@@ -201,9 +188,7 @@ export default class Configurator {
         this.ground.dragable = false;
         const v0 = this.ground.geometry.boundingBox.min;
         const v1 = this.ground.geometry.boundingBox.max;
-
         // this.world.add(this.ground);
-
 
         this.objLoader.load('../assets/images/Grass.obj', (geometry) => {
             geometry.traverse((mesh) => {
@@ -217,7 +202,6 @@ export default class Configurator {
                         grassClone.position.copy(randomPointInDiapason(v0, v1));
                         grassClone.rotation.y = randNum(0,360,true) * Math.PI / 180;
                         grassClone.scale.set(scaler,scaler,scaler);
-
                         group.add(grassClone);
                     }
                 }
@@ -269,7 +253,12 @@ export default class Configurator {
 
         if (this.editableMeshes.filter((mesh) => mesh === item.object).length) {
             UIController.showButton('edit', () => {
-                console.log('button click');
+                this.editMesh(item.object);
+                UIController.removeButton('edit');
+                UIController.showButton('apply', () => {
+                    this.completeEditingMesh(item.object);
+                    UIController.removeButton('apply');
+                });
             });
         }
 
@@ -387,8 +376,6 @@ export default class Configurator {
         return new Promise((resolve) => { positionResolve = resolve; });
     }
 
-
-
     loadModel(part) {
         const meshes = [];
         const group = new Object3D();
@@ -429,17 +416,33 @@ export default class Configurator {
                             map: texture
                         });
                     }
+                    part.mesh_id = mesh.id;
+                    part.texts.forEach((t) => {
+                        if (t.mobility_mashname === mesh.name) {
+                            t.mesh_id = mesh.id;
+                        }
+                    });
+                    part.portraits.forEach((p) => {
+                        if (p.mobility_mashname === mesh.name) {
+                            p.mesh_id = mesh.id;
+                        }
+                    });
+                    mesh.part_id = part.id;
+                    mesh.part_parent_id = part.parent_id;
                     mesh.absoluteCoords = getAbsolutePosition(mesh);
+                    mesh.absoluteCoords.x += partPosition.x;
+                    mesh.absoluteCoords.y += partPosition.y;
+                    mesh.absoluteCoords.z += partPosition.z;
                     meshes.push(mesh);
                 }
             });
 
+            group.position.set(partPosition.x, partPosition.y, partPosition.z);
+            group.rotation.set(partRotation.x, partRotation.y, partRotation.z);
+
             meshes.forEach((mesh) => {
                 group.add(mesh);
             });
-
-            group.position.set(partPosition.x, partPosition.y, partPosition.z);
-            group.rotation.set(partRotation.x, partRotation.y, partRotation.z);
 
             Object.assign(group, {
                 dragable: true,
@@ -467,18 +470,17 @@ export default class Configurator {
         const attributesArray = [...filteredTexts, ...filteredPortraits];
 
         attributesArray.forEach((attribute) => {
-            const meshForTexture = group.getObjectByName(attribute.mobility_mashname);
-            if (meshForTexture) {
+            const meshForTexture = group.getObjectById(attribute.mesh_id);
+            if (meshForTexture && !meshForTexture.material.isFilled) {
                 const {width, height} = part.model.constant_sizes.find((sizeItem) =>
                     sizeItem.meshName === attribute.mobility_mashname
                 );
                 const canvasesSubGroup = objectGroupForCanvases[part.id]
                     ? objectGroupForCanvases[part.id]
                     : objectGroupForCanvases[part.id] = {};
-                const fabricCanvas = canvasesSubGroup[attribute.mobility_mashname]
-                    ? canvasesSubGroup[attribute.mobility_mashname]
-                    : canvasesSubGroup[attribute.mobility_mashname] = this.configurator2d.createCanvasForTexture(width, height);
-
+                const fabricCanvas = canvasesSubGroup[attribute.mesh_id]
+                    ? canvasesSubGroup[attribute.mesh_id]
+                    : canvasesSubGroup[attribute.mesh_id] = this.configurator2d.createCanvasForTexture(width, height);
                 part.texts.forEach((tI) => {
                     if (tI.mobility_mashname === meshForTexture.name) {
                         const text = this.configurator2d.createTextInstance(tI.value, {
@@ -516,103 +518,50 @@ export default class Configurator {
         });
     }
 
-    // _createCanvasForText(currentElement, width, height, left, top) {
-    //     const canvas = document.createElement('canvas');
-    //     const fabricCanvas = new fabric.Canvas(canvas, { width, height });
-    //     const pixelsPerMM = fabricCanvas.width / 400;
-    //     const mHeight = pixelsPerMM * 1100;
-    //     fabricCanvas.wrapperEl.style.left = `${left}px`;
-    //     fabricCanvas.wrapperEl.style.top = `${top}px`;
-    //     fabricCanvas.wrapperEl.style.position = 'absolute';
-    //     currentElement.material.isFilled = true;
-    //
-    //     // const checkbox = new fabric.Image()
-    //
-    //     const textBox = new fabric.Textbox("", {
-    //         name: 'TextBox',
-    //         fontSize: 20,
-    //         left: 0,
-    //         top: 0,
-    //         fontFamily: 'helvetica',
-    //         fontWeight: '',
-    //         originX: 'left',
-    //         fill: "#ffffff",
-    //         hasRotatingPoint: true,
-    //         centerTransform: true,
-    //         evented: true
-    //     });
-    //     fabricCanvas.getItemByName = function(name) {
-    //         return this.getObjects().filter(obj => obj.name === name)[0]
-    //     };
-    //     fabricCanvas.centerObject(textBox);
-    //     fabricCanvas.add(textBox);
-    //     fabricCanvas.setActiveObject(textBox);
-    //     textBox.enterEditing();
-    //     fabricCanvas.renderAll();
-    //
-    //     Object.assign(this.textBox, {
-    //         parentCanvas: canvas,
-    //         canvas: fabricCanvas,
-    //         projectionHeight: mHeight,
-    //         pixelsPerMM
-    //     });
-    //
-    //     document.body.appendChild(fabricCanvas.wrapperEl);
-    //
-    //     // fabricCanvas.upperCanvasEl.addEventListener('click', () => {
-    //     //     textBox.enterEditing();
-    //     // });
-    //     // currentElement.material.map = texture;
-    // }
-
-    editFrontText(mesh) {
+    editMesh(mesh) {
         this.camera.controls.minPolarAngle = 0;
         this.camera.controls.maxPolarAngle = Infinity;
         this.camera.controls.enabled = false;
         this.defaultCameraPosition.x = this.camera.controls.target.x;
         this.defaultCameraPosition.y = this.camera.controls.target.y;
         this.defaultCameraPosition.z = this.camera.controls.getRadius();
-        const stellaFront = this.world.getObjectByName('TextBox');
+        mesh.absoluteCoords = getAbsolutePosition(mesh);
 
         this._setCameraPosition({
             polar: Math.PI / 2,
-            zoom: getCenterPoint(stellaFront).z + 1500,
-            x: getCenterPoint(stellaFront).x,
-            y: getCenterPoint(stellaFront).y,
+            zoom: getCenterPoint(mesh).z + 1500,
+            x: getCenterPoint(mesh).x,
+            y: getCenterPoint(mesh).y,
             azimuth: 0,
         }).then(() => {
             const {width, height, left, top} = calculateCanvasFramePosition(
-                stellaFront, this.camera.object, this.width, this.height
+                mesh, this.camera.object, this.width, this.height
             );
-            if (stellaFront.material.isFilled) {
-                stellaFront.material.map = new Texture();
-                document.body.appendChild(this.textBox.canvas.wrapperEl);
-                this.textBox.canvas.wrapperEl.style.left = left;
-                this.textBox.canvas.wrapperEl.style.top = top;
-                this.textBox.canvas.wrapperEl.style.width = width;
-                this.textBox.canvas.wrapperEl.style.height = height;
-                const textBox = this.textBox.canvas.getItemByName('TextBox');
-                if (textBox) {
-                    this.textBox.canvas.setActiveObject(textBox);
-                    textBox.enterEditing();
-                }
-            } else {
-                this._createCanvasForText(stellaFront, width, height, left, top);
-            }
+            const fabricCanvas = this.configurator2d.canvases[mesh.part_parent_id][mesh.part_id][mesh.id];
+            mesh.material.map = new Texture();
+            document.body.appendChild(fabricCanvas.wrapperEl);
+            fabricCanvas.wrapperEl.style.position = 'absolute';
+            fabricCanvas.wrapperEl.style.left = `${left}px`;
+            fabricCanvas.wrapperEl.style.top = `${top}px`;
+            fabricCanvas.wrapperEl.style.width = `${width}px`;
+            fabricCanvas.wrapperEl.style.height = `${height}px`;
+            fabricCanvas.lowerCanvasEl.style.transform = `scale(${width / fabricCanvas.width}, ${height / fabricCanvas.height})`;
+            fabricCanvas.upperCanvasEl.style.transform = `scale(${width / fabricCanvas.width}, ${height / fabricCanvas.height})`;
+            fabricCanvas.lowerCanvasEl.style.transformOrigin = 'left top';
+            fabricCanvas.upperCanvasEl.style.transformOrigin = 'left top';
         });
     }
 
-    setFrontText() {
-        this.textBox.canvas.discardActiveObject();
-        this.textBox.canvas.renderAll();
-        const stellaFront = this.world.getObjectByName('TextBox');
-        const { canvas } = this.textBox.canvas.contextContainer;
-        stellaFront.material.map = new CanvasTexture(canvas);
+    completeEditingMesh(mesh) {
+        const fabricCanvas = this.configurator2d.canvases[mesh.part_parent_id][mesh.part_id][mesh.id];
+        fabricCanvas.discardActiveObject();
+        fabricCanvas.renderAll();
+        const { canvas } = fabricCanvas.contextContainer;
+        mesh.material.map = new CanvasTexture(canvas);
 
         if (document.querySelector('.canvas-container')) {
             document.querySelector('.canvas-container').remove();
         }
-
         this._setCameraPosition({
             x: this.defaultCameraPosition.x,
             y: this.defaultCameraPosition.y,
