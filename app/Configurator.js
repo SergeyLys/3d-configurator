@@ -18,7 +18,7 @@ import {
     SpotLight, Texture,
     TextureLoader, Vector2,
     Vector3,
-    WebGLRenderer
+    WebGLRenderer,
 } from "three-full";
 import {
     getAbsolutePosition,
@@ -35,6 +35,7 @@ import OrbitControls from "./libs/OrbitControls";
 import DragdropControls from "./DragdropControls";
 import UIController from "./UIController";
 import TWEEN from "@tweenjs/tween.js";
+import { DragControls } from './DragControls';
 
 // TODO: 1. Парсинг схемы и загрузка мешей 5ч. DONE
 // TODO: 2. Наложение текстов и портретов из схемы 12ч. DONE
@@ -51,21 +52,23 @@ export default class Configurator {
         this.targetForDragging = null;
         this.intersects = [];
         this.editableMeshes = [];
+        this.meshesForDrag = [];
         this.sceneGroups = {};
         this.dragItem = null;
         this.width = null;
         this.height = null;
-        this.textBox = {};
         this.defaultCameraPosition = new Vector3();
         this.data = data;
         this.areaWidth = parseSize(this.data.size).width * 10;
         this.areaHeight = parseSize(this.data.size).height * 10;
         this.configurator2d = new Configurator2d();
+        this.isMeshEditing = false;
 
         this._doMouseDown = this._doMouseDown.bind(this);
-        this._doMouseMove = this._doMouseMove.bind(this);
-        this._doMouseUp = this._doMouseUp.bind(this);
 
+        document.addEventListener('mousedown', (e) => {
+            this._doMouseDown(e, e.pageX, e.pageY);
+        });
         this._initScene();
     }
 
@@ -135,9 +138,32 @@ export default class Configurator {
             objLinks.forEach((part) => {
                 this.loadModel(part);
             });
+            
 
+            const dragControls = new DragControls(
+                this.meshesForDrag,
+                this.camera.object,
+                this.renderer.domElement,
+                this.sceneGroups,
+                this.ground.position
+            );
+
+            dragControls.addEventListener( 'dragstart', ( e ) => {
+                // e.preventDefault()
+                this.camera.controls.enabled = false;
+            });
+
+            dragControls.addEventListener( 'dragend', ( e ) => {
+                // e.preventDefault()
+                this.camera.controls.enabled = true;
+
+            });
+
+            // document.addEventListener('mousedown', () => {
+            //     console.log('mousedown');
+            // });
         });
-        DragdropControls.setUpMouseHandler(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp, true);
+        // DragdropControls.setUpMouseHandler(this.canvas,this._doMouseDown,this._doMouseMove,this._doMouseUp, true);
         this._render();
     }
 
@@ -238,7 +264,7 @@ export default class Configurator {
         this.camera.controls.target.set(this.areaWidth/2, 0, this.areaHeight/2);
     }
 
-    _doMouseDown(x,y) {
+    _doMouseDown(e, x,y) {
         if (this.targetForDragging.parent === this.world) {
             this.world.remove(this.targetForDragging);
         }
@@ -250,72 +276,26 @@ export default class Configurator {
             return false;
         }
         const item = this.intersects[0];
+        if (this.editableMeshes.filter((mesh) => mesh === item.object).length && !this.isMeshEditing) {
 
-        if (this.editableMeshes.filter((mesh) => mesh === item.object).length) {
             UIController.showButton('edit', () => {
                 this.editMesh(item.object);
                 UIController.removeButton('edit');
+                this.isMeshEditing = true;
                 UIController.showButton('apply', () => {
                     this.completeEditingMesh(item.object);
                     UIController.removeButton('apply');
+                    this.isMeshEditing = false;
+
                 });
             });
+
+        } else if (e.target === this.renderer.domElement && (UIController.getButton('apply') || UIController.getButton('edit'))){
+            UIController.removeButton('apply');
+            UIController.removeButton('edit');
+            this.isMeshEditing = false;
+
         }
-
-        const itemsParent = item.object.parent;
-        let objectHit;
-
-        if (itemsParent && itemsParent.parentObjectId && this.sceneGroups[itemsParent.parentObjectId]) {
-            objectHit = this.sceneGroups[itemsParent.parentObjectId];
-        } else {
-            objectHit = item.object;
-        }
-        
-        if (!this.camera.controls.enabled || !objectHit.dragable) {
-            return false;
-        }
-        else {
-            this.camera.controls.enabled = false;
-            this.dragItem = objectHit;
-            this.world.add(this.targetForDragging);
-            this.targetForDragging.position.set(0,item.point.y,0);
-            // this.renderer.render(this.scene, this.camera.object);
-            return true;
-        }
-    }
-
-    _doMouseMove(x,y,evt,prevX,prevY) {
-        let a = 2*x/this.canvas.width - 1;
-        let b = 1 - 2*y/this.canvas.height;
-        this.raycaster.setFromCamera( new Vector2(a,b), this.camera.object );
-        this.intersects = this.raycaster.intersectObject( this.targetForDragging );
-        if (this.intersects.length === 0) {
-            return;
-        }
-        const locationX = this.intersects[0].point.x;
-        const locationZ = this.intersects[0].point.z;
-        const meshBox = new Box3().setFromObject(this.dragItem).getSize(new Vector3());
-        const coords = new Vector3(locationX - meshBox.x/2, 0, locationZ - meshBox.z/2);
-        const boundMax = this.ground.geometry.boundingBox.max;
-        const boundMin = this.ground.geometry.boundingBox.min;
-
-        this.world.worldToLocal(coords);
-        a = Math.min(
-            boundMax.x + boundMax.x - meshBox.x,
-            Math.max(boundMin.x + boundMax.x, coords.x)
-        );
-
-        b = Math.min(
-            boundMax.y + boundMax.y - meshBox.z,
-            Math.max(boundMin.y + boundMax.y, coords.z)
-        );
-        this.dragItem.position.x = a;
-        this.dragItem.position.z = b;
-        // this.renderer.render(this.scene, this.camera.object);
-    }
-
-    _doMouseUp() {
-        this.camera.controls.enabled = true;
     }
 
     _setCameraPosition(options) {
@@ -442,6 +422,7 @@ export default class Configurator {
 
             meshes.forEach((mesh) => {
                 group.add(mesh);
+                this.meshesForDrag.push(mesh);
             });
 
             Object.assign(group, {
@@ -453,6 +434,7 @@ export default class Configurator {
             Object.assign(this.sceneGroups[part.parent_id], {
                 dragable: true
             });
+
 
             this.applySurfaceAttribute(group, part);
 

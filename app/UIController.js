@@ -27,6 +27,8 @@ export default new class UIController {
             if (typeof action === 'function') {
                 buttonNode.addEventListener('click', action);
             }
+
+            return buttonNode;
         }
     }
 
