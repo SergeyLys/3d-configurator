@@ -32,7 +32,6 @@ import {
 } from "./helpers";
 import Configurator2d from "./Configurator2d";
 import OrbitControls from "./libs/OrbitControls";
-import DragdropControls from "./DragdropControls";
 import UIController from "./UIController";
 import TWEEN from "@tweenjs/tween.js";
 import { DragControls } from './DragControls';
