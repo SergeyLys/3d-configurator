@@ -54,7 +54,6 @@ export default class Configurator {
         this.editableMeshes = [];
         this.meshesForDrag = [];
         this.sceneGroups = {};
-        this.dragItem = null;
         this.width = null;
         this.height = null;
         this.defaultCameraPosition = new Vector3();
