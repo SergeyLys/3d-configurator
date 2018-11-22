@@ -61,7 +61,7 @@
                     "id": "transparent",
                     "type": "material"
                   },
-                  "mashname": "TextBox"
+                  "mashname": "StellaFrontText"
                 }
               ],
               "src_threejs": "../assets/images/23.obj",
@@ -1011,7 +1011,7 @@
             "threejs_type": "3d",
             "constant_sizes": [
               {
-                "meshName": "TextBox",
+                "meshName": "StellaFrontText",
                 "width": "400",
                 "height": "1100"
               }
@@ -1025,7 +1025,7 @@
                   "id": "transparent",
                   "type": "material"
                 },
-                "mashname": "TextBox"
+                "mashname": "StellaFrontText"
               }
             ],
             "src_threejs": "../assets/images/23.obj",
@@ -1602,7 +1602,7 @@
                 "rotation_z": 0
               },
               "threejs_type": "2dtexture",
-              "mobility_mashname": "TextBox"
+              "mobility_mashname": "StellaFrontText"
             },
             {
               "id": "treeroot_0_0_portraits_1_",
@@ -1750,7 +1750,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "TextBox",
+              "mobility_mashname": "StellaFrontText",
               "threejs_type": "text"
             },
             {
@@ -1786,7 +1786,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "TextBox",
+              "mobility_mashname": "StellaFrontText",
               "threejs_type": "text"
             },
             {
@@ -1819,7 +1819,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "TextBox",
+              "mobility_mashname": "StellaFrontText",
               "threejs_type": "text"
             },
             {
@@ -1963,7 +1963,7 @@
             "src_threejs": "../assets/images/23.obj",
             "constant_sizes": [
               {
-                "meshName": "TextBox",
+                "meshName": "StellaFrontText",
                 "width": "400",
                 "height": "1100"
               }
@@ -1977,7 +1977,7 @@
                   "id": "transparent",
                   "type": "material"
                 },
-                "mashname": "TextBox"
+                "mashname": "StellaFrontText"
               }
             ],
             "default_position": {
@@ -2553,7 +2553,7 @@
                 "rotation_z": 0
               },
               "threejs_type": "2dtexture",
-              "mobility_mashname": "TextBox"
+              "mobility_mashname": "StellaFrontText"
             },
             {
               "id": "treeroot_0_1_portraits_1_",
@@ -2701,7 +2701,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "TextBox",
+              "mobility_mashname": "StellaFrontText",
               "threejs_type": "text"
             },
             {
@@ -2737,7 +2737,7 @@
                 "rotation_y": 0,
                 "rotation_z": 0
               },
-              "mobility_mashname": "TextBox",
+              "mobility_mashname": "StellaFrontText",
               "threejs_type": "text"
             },
             {

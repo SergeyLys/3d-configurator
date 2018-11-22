@@ -560,7 +560,7 @@ export default class Configurator {
             texture.wrapS = texture.wrapT = RepeatWrapping;
             this.groups.forEach((group) => {
                 group.children.forEach((mesh) => {
-                    if (group.editable && mesh.name !== 'TextBox') {
+                    if (group.editable && mesh.name !== 'StellaFrontText') {
                         mesh.material.map = texture;
                     }
                 });

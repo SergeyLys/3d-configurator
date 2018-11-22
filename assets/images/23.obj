@@ -1,10 +1,10 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
 # File Created: 25.10.2018 23:01:16
 
-mtllib 23+TextBoxNEW (6).mtl
+mtllib 23+StellaFrontTextNEW (6).mtl
 
 #
-# object TextBox
+# object StellaFrontText
 #
 
 v  9.7204 828.0016 85.0001
@@ -23,15 +23,15 @@ vt 0.9986 0.0047 0.0000
 vt 0.9970 0.9958 0.0000
 # 4 texture coords
 
-o TextBox
-g TextBox
+o StellaFrontText
+g StellaFrontText
 usemtl Granite
 s off
 f 1/1/1 2/2/2 3/3/2 4/4/1 
 # 1 polygons
 
 #
-# object Front
+# object StellaBody
 #
 
 v  500.0000 0.7173 69.9997
@@ -580,8 +580,8 @@ vt 0.8783 0.7495 0.0000
 vt 0.8732 0.7567 0.0000
 # 252 texture coords
 
-o Front
-g Front
+o StellaBody
+g StellaBody
 usemtl Granite2
 s 4
 f 5/5/3 6/6/3 7/7/4 8/8/4 
